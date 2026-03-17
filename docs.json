@@ -72,19 +72,9 @@
           },
           {
             "group": "Endpoint examples",
-            "openapi": "windermereapi.json",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
+            "openapi": "windermereapi.json"
           }
         ]
-      },
-      {
-        "product": "Windermere API",
-        "openapi": "windermereapi.json"
       }
     ]
   },
