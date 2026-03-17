@@ -16,12 +16,12 @@
           {
             "group": "API documentation",
             "pages": [
-              "api-reference/introduction"
+              "api-reference/introduction",
+              {
+                "group": "Endpoints",
+                "openapi": "windermereapi.json"
+              }
             ]
-          },
-          {
-            "group": "Endpoint examples",
-            "openapi": "windermereapi.json"
           }
         ]
       }
