@@ -16,16 +16,11 @@
         "products": [
           {
             "product": "API reference",
-            "groups": [
+            "pages": [
+              "api-reference/introduction",
               {
-                "group": "API documentation",
-                "pages": [
-                  "api-reference/introduction",
-                  {
-                    "group": "Windermere API",
-                    "openapi": "windermereapi(1).json"
-                  }
-                ]
+                "group": "Endpoints",
+                "openapi": "windermereapi(1).json"
               }
             ]
           }

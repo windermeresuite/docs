@@ -1,33 +1,25 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: "Introduction"
 ---
 
 <Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
+  If you have not obtained your Windermere API developer account please reach out to [placeholder@placeholder.com](mailto:placeholder@placeholder.com) to request account creation.
 </Note>
 
-## Welcome
+## Getting Started
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+API Base URL
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+```text
+https://api.windermere.com/v1/api
+```
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+All API [endpoints](https://windermereservicescompany.mintlify.app/api-reference/agents) are authenticated using an API key and x-api-key header
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+```javascript
+curl --request GET \
+  --url https://api.windermere.com/v1/api
+  --header 'x-api-key: <api-key>'
 ```
