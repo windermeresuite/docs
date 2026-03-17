@@ -1,0 +1,3714 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "WindermereAPI",
+        "description": "",
+        "version": "1.0"
+    },
+    "servers": [{
+        "url": "https://api.windermere.com/v1/api"
+    }],
+    "paths": {
+        "/agents": {
+            "get": {
+                "summary": "agents",
+                "description": "agents",
+                "operationId": "agents",
+                "parameters": [{
+                    "name": "moxi_works_company_id",
+                    "in": "query",
+                    "description": "A valid MoxiWorks Company ID. Use Company Endpoint to determine what moxi_works_company_id you can use.",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/components/schemas/AgentGetRequest"
+                    }
+                }, {
+                    "name": "page_number",
+                    "in": "query",
+                    "description": "For queries with multi-page responses, use the page_number parameter to return data for specific pages. Data for page 1 is returned if this parameter is not included. Use this parameter if total_pages indicates that there is more than one page of data available.",
+                    "schema": {
+                        "$ref": "#/components/schemas/AgentGetRequest-1"
+                    }
+                }, {
+                    "name": "updated_since",
+                    "in": "query",
+                    "description": "any Agent objects updated after this Unix timestamp will be returned in the response. If no updated_since parameter is included in the request, only Agent objects updated in the last seven days will be returned.\n\nBy default only Agent objects updated in the last seven days will be returned.",
+                    "schema": {
+                        "$ref": "#/components/schemas/AgentGetRequest-2"
+                    }
+                }, {
+                    "name": "deactivated",
+                    "in": "query",
+                    "description": "To find Agent accounts deactivated within the specified timeframe, pass true for this boolean parameter.",
+                    "schema": {
+                        "$ref": "#/components/schemas/AgentGetRequest-3"
+                    }
+                }, {
+                    "name": "deactivated_since",
+                    "in": "query",
+                    "description": "any Agent objects deactivated after this Unix timestamp will be returned in the response. If no deactivated_since parameter is included in the request, only Agent objects deactivated in the last seven days will be returned.\n\nBy default only Agent objects deactivated in the last seven days will be returned.",
+                    "schema": {
+                        "$ref": "#/components/schemas/AgentGetRequest-4"
+                    }
+                }, {
+                    "name": "include_access_level",
+                    "in": "query",
+                    "description": "To include access level information for the agent in the response, pass true",
+                    "schema": {
+                        "$ref": "#/components/schemas/AgentGetRequest-5"
+                    }
+                }, {
+                    "name": "include_company_programs",
+                    "in": "query",
+                    "description": "To include company specific programs associated with the agent in the response, pass true.",
+                    "schema": {
+                        "$ref": "#/components/schemas/AgentGetRequest-6"
+                    }
+                }, {
+                    "name": "include_partners",
+                    "in": "query",
+                    "description": "To include affiliate data associated with the agent in the response, pass true.",
+                    "schema": {
+                        "$ref": "#/components/schemas/AgentGetRequest-7"
+                    }
+                }, {
+                    "name": "include_website",
+                    "in": "query",
+                    "description": "To include the base url (website_base_url) of the agent’s MoxiWorks website pass true.",
+                    "schema": {
+                        "$ref": "#/components/schemas/AgentGetRequest-8"
+                    }
+                }, {
+                    "name": "include_reviews",
+                    "in": "query",
+                    "description": "To include ratings and reviews associated with the agent in the response, pass true.",
+                    "schema": {
+                        "$ref": "#/components/schemas/AgentGetRequest-9"
+                    }
+                }, {
+                    "name": "include_bio",
+                    "in": "query",
+                    "description": "To include bio associated with the agent in the response, pass true.",
+                    "schema": {
+                        "$ref": "#/components/schemas/AgentGetRequest-10"
+                    }
+                }, {
+                    "name": "parent_company_id",
+                    "in": "query",
+                    "description": "This is the numeric_id or moxi_works_company_id of a company that is considered to be a parent company in the MoxiWorks Platform. This request attribute has two functions:\n\n1. It provides for a broad scope by which partners may be afforded permissions to perform MoxiWorks Platform actions, in scenarios where a partner does business with a parent company in the MoxiWorks System.\n2. It provides broad scope under which agents may be looked up using the source_agent_id request attribute in many scenarios across different MoxiWorks Platform endpoints and actions.\n\nPlease note that this attribute cannot be used as a replacement for the moxi_works_company_id request attribute in scenarios where the moxi_works_company_id request attribute is required by the action.\n\nPlease note that this attribute cannot be used to broaden scope of any request where the scope of the request is defined by the moxi_works_company_id request attribute.\n\nPlease note that when passed in conjunction with the moxi_works_company_id request attribute, the value of moxi_works_company_id request attribute must be the numeric id form.\n\nAny use of this request attribute must be coordinated with MoxiWorks Platform Partner services. Please reach out to partner services for more information.",
+                    "schema": {
+                        "$ref": "#/components/schemas/AgentGetRequest-11"
+                    }
+                }, {
+                    "name": "moxi_works_office_id",
+                    "in": "query",
+                    "description": "A valid MoxiWorks Office ID. Use Office Endpoint to determine what moxi_works_office_id you can use.",
+                    "schema": {
+                        "$ref": "#/components/schemas/AgentGetRequest-12"
+                    }
+                }, {
+                    "name": "has_company_programs",
+                    "in": "query",
+                    "description": "To include only Agent objects associated with company specific programs pass true.",
+                    "schema": {
+                        "$ref": "#/components/schemas/AgentGetRequest-13"
+                    }
+                }, {
+                    "name": "timestamps_only",
+                    "in": "query",
+                    "description": "If supplied then the results will exclude all data except primary identifiers and a unix timestamp (last_updated) & iso8601 timestamp (modification_timestamp) of the last time this record was updated.",
+                    "schema": {
+                        "$ref": "#/components/schemas/AgentGetRequest-14"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Agents"
+                                },
+                                "example": [{
+                                    "moxi_works_agent_id": "string",
+                                    "agent_uuid": "string",
+                                    "client_id_1": {},
+                                    "client_id_2": "string",
+                                    "client_auths": [],
+                                    "facebook_account_id": "string",
+                                    "client_agent_id": {},
+                                    "auth_client_id": {},
+                                    "mls_agent_id": {},
+                                    "license": "string",
+                                    "mls_name": "string",
+                                    "mls_abbreviation": "string",
+                                    "available_mls": [{
+                                        "name": "string",
+                                        "display_name": "string",
+                                        "mls_abbreviation": "string",
+                                        "agent_id": {}
+                                    }],
+                                    "moxi_works_office_id": "string",
+                                    "office_id": 0,
+                                    "office_name": "string",
+                                    "client_office_id": "string",
+                                    "company_id": 0,
+                                    "client_company_id": "string",
+                                    "alternate_internal_office_id": {},
+                                    "office_address_street": "string",
+                                    "office_address_street2": {},
+                                    "office_address_city": "string",
+                                    "office_address_state": "string",
+                                    "office_address_zip": "string",
+                                    "office_mailing_address_street": "string",
+                                    "office_mailing_address_street2": {},
+                                    "office_mailing_address_city": "string",
+                                    "office_mailing_address_state": "string",
+                                    "office_mailing_address_zip": "string",
+                                    "name": {},
+                                    "first_name": {},
+                                    "last_name": {},
+                                    "nickname": {},
+                                    "mobile_phone_number": {},
+                                    "alt_phone_number": {},
+                                    "fax_phone_number": {},
+                                    "main_phone_number": "string",
+                                    "office_phone_number": "string",
+                                    "primary_email_address": "string",
+                                    "secondary_email_address": "string",
+                                    "lead_routing_email_address": {},
+                                    "email_addresses": {
+                                        "primary": "string",
+                                        "display": "string",
+                                        "alternate": "string",
+                                        "moxi_sync": "string",
+                                        "zillow": {},
+                                        "lead_routing": {}
+                                    },
+                                    "bio": {},
+                                    "title": "string",
+                                    "designations": {},
+                                    "uuid": "string",
+                                    "has_product_access": true,
+                                    "has_engage_access": true,
+                                    "access_level": "string",
+                                    "view_level": "string",
+                                    "teams": [],
+                                    "website_base_url": {},
+                                    "twitter": {},
+                                    "google_plus": {},
+                                    "facebook": {},
+                                    "instagram": {},
+                                    "blogger": {},
+                                    "youtube": {},
+                                    "linked_in": {},
+                                    "pinterest": {},
+                                    "home_page": "string",
+                                    "profile_image_url": "string",
+                                    "profile_thumb_url": "string",
+                                    "region": "string",
+                                    "service_area_zip_codes": [],
+                                    "agent_website": {
+                                        "base_url": {},
+                                        "bio_page_slug": {}
+                                    },
+                                    "alternate_offices": [],
+                                    "partners": [],
+                                    "company_programs": [],
+                                    "source_metadata": [{
+                                        "identifier_source": "string",
+                                        "identifier_type": "string",
+                                        "identifier_key": {}
+                                    }],
+                                    "created_timestamp": 0,
+                                    "deactivated_timestamp": {},
+                                    "last_updated_timestamp": 0,
+                                    "last_updated": 0,
+                                    "modification_timestamp": "string",
+                                    "profile_visible_online": true,
+                                    "languages": [],
+                                    "user_reviews": []
+                                }]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/agents/{guid}": {
+            "get": {
+                "summary": "agent",
+                "description": "agent",
+                "operationId": "agent",
+                "parameters": [{
+                    "name": "guid",
+                    "in": "path",
+                    "description": "<small>moxi_works_agent_id or agent_uuid or source_agent_id\nOne of these parameters must be supplied Please reference Agent Identifiers for information about how to construct your agent identifier request params.</small>",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/components/schemas/Agent"
+                    }
+                }, {
+                    "name": "moxi_works_company_id",
+                    "in": "query",
+                    "description": "A valid MoxiWorks Company ID. Use Company Endpoint to determine what moxi_works_company_id you can use.",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/components/schemas/Agent-guid-GetRequest"
+                    }
+                }, {
+                    "name": "parent_company_id",
+                    "in": "query",
+                    "description": "This is the numeric_id or moxi_works_company_id of a company that is considered to be a parent company in the MoxiWorks Platform. This request attribute has two functions:\n\n1. It provides for a broad scope by which partners may be afforded permissions to perform MoxiWorks Platform actions, in scenarios where a partner does business with a parent company in the MoxiWorks System.\n2. It provides broad scope under which agents may be looked up using the source_agent_id request attribute in many scenarios across different MoxiWorks Platform endpoints and actions.\n\nPlease note that this attribute cannot be used as a replacement for the moxi_works_company_id request attribute in scenarios where the moxi_works_company_id request attribute is required by the action.\n\nPlease note that this attribute cannot be used to broaden scope of any request where the scope of the request is defined by the moxi_works_company_id request attribute.\n\nPlease note that when passed in conjunction with the moxi_works_company_id request attribute, the value of moxi_works_company_id request attribute must be the numeric id form.\n\nAny use of this request attribute must be coordinated with MoxiWorks Platform Partner services. Please reach out to partner services for more information.",
+                    "schema": {
+                        "$ref": "#/components/schemas/Agent-guid-GetRequest-1"
+                    }
+                }, {
+                    "name": "include_access_level",
+                    "in": "query",
+                    "description": "To include access level information for the agent in the response, pass true",
+                    "schema": {
+                        "$ref": "#/components/schemas/Agent-guid-GetRequest-2"
+                    }
+                }, {
+                    "name": "include_gci_goals",
+                    "in": "query",
+                    "description": "Whether to include agent’s GCI goals and commissions data in the response data.",
+                    "schema": {
+                        "$ref": "#/components/schemas/Agent-guid-GetRequest-3"
+                    }
+                }, {
+                    "name": "include_partners",
+                    "in": "query",
+                    "description": "To include affiliate data associated with the agent in the response, pass true.",
+                    "schema": {
+                        "$ref": "#/components/schemas/Agent-guid-GetRequest-4"
+                    }
+                }, {
+                    "name": "include_reviews",
+                    "in": "query",
+                    "description": "To include ratings and reviews associated with the agent in the response, pass true.",
+                    "schema": {
+                        "$ref": "#/components/schemas/Agent-guid-GetRequest-5"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Agent"
+                                },
+                                "example": {
+                                    "moxi_works_agent_id": "string",
+                                    "agent_uuid": "string",
+                                    "client_id_1": {},
+                                    "client_id_2": "string",
+                                    "client_auths": [],
+                                    "facebook_account_id": "string",
+                                    "client_agent_id": {},
+                                    "auth_client_id": {},
+                                    "mls_agent_id": {},
+                                    "license": "string",
+                                    "mls_name": "string",
+                                    "mls_abbreviation": "string",
+                                    "available_mls": [{
+                                        "name": "string",
+                                        "display_name": "string",
+                                        "mls_abbreviation": "string",
+                                        "agent_id": {}
+                                    }],
+                                    "moxi_works_office_id": "string",
+                                    "office_id": 0,
+                                    "office_name": "string",
+                                    "client_office_id": "string",
+                                    "company_id": 0,
+                                    "client_company_id": "string",
+                                    "alternate_internal_office_id": {},
+                                    "office_address_street": "string",
+                                    "office_address_street2": {},
+                                    "office_address_city": "string",
+                                    "office_address_state": "string",
+                                    "office_address_zip": "string",
+                                    "office_mailing_address_street": "string",
+                                    "office_mailing_address_street2": {},
+                                    "office_mailing_address_city": "string",
+                                    "office_mailing_address_state": "string",
+                                    "office_mailing_address_zip": "string",
+                                    "name": {},
+                                    "first_name": {},
+                                    "last_name": {},
+                                    "nickname": {},
+                                    "mobile_phone_number": {},
+                                    "alt_phone_number": {},
+                                    "fax_phone_number": {},
+                                    "main_phone_number": "string",
+                                    "office_phone_number": "string",
+                                    "primary_email_address": "string",
+                                    "secondary_email_address": "string",
+                                    "lead_routing_email_address": {},
+                                    "email_addresses": {
+                                        "primary": "string",
+                                        "display": "string",
+                                        "alternate": "string",
+                                        "moxi_sync": "string",
+                                        "zillow": {},
+                                        "lead_routing": {}
+                                    },
+                                    "bio": {},
+                                    "title": "string",
+                                    "designations": {},
+                                    "uuid": "string",
+                                    "has_product_access": true,
+                                    "has_engage_access": true,
+                                    "access_level": "string",
+                                    "view_level": "string",
+                                    "teams": [],
+                                    "website_base_url": {},
+                                    "twitter": {},
+                                    "google_plus": {},
+                                    "facebook": {},
+                                    "instagram": {},
+                                    "blogger": {},
+                                    "youtube": {},
+                                    "linked_in": {},
+                                    "pinterest": {},
+                                    "home_page": "string",
+                                    "profile_image_url": "string",
+                                    "profile_thumb_url": "string",
+                                    "region": "string",
+                                    "service_area_zip_codes": [],
+                                    "agent_website": {
+                                        "base_url": {},
+                                        "bio_page_slug": {}
+                                    },
+                                    "alternate_offices": [],
+                                    "partners": [],
+                                    "company_programs": [],
+                                    "source_metadata": [{
+                                        "identifier_source": "string",
+                                        "identifier_type": "string",
+                                        "identifier_key": {}
+                                    }],
+                                    "created_timestamp": 0,
+                                    "deactivated_timestamp": {},
+                                    "last_updated_timestamp": 0,
+                                    "last_updated": 0,
+                                    "modification_timestamp": "string",
+                                    "profile_visible_online": true,
+                                    "languages": [],
+                                    "user_reviews": []
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/offices": {
+            "get": {
+                "summary": "offices",
+                "description": "MoxiWorks Platform Office entities represent brokerage offices.",
+                "operationId": "offices",
+                "parameters": [{
+                    "name": "moxi_works_company_id",
+                    "in": "query",
+                    "description": "A valid MoxiWorks Company ID. Use Company Endpoint to determine what moxi_works_company_id you can use.",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/components/schemas/OfficeGetRequest"
+                    }
+                }, {
+                    "name": "deactivated",
+                    "in": "query",
+                    "description": "To find offices deactivated within the specified timeframe, pass true for this boolean parameter.",
+                    "schema": {
+                        "$ref": "#/components/schemas/OfficeGetRequest-1"
+                    }
+                }, {
+                    "name": "page_number",
+                    "in": "query",
+                    "description": "For queries with multi-page responses, use the page_number parameter to return data for specific pages. Data for page 1 is returned if this parameter is not included. Use this parameter if total_pages indicates that there is more than one page of data available.",
+                    "schema": {
+                        "$ref": "#/components/schemas/OfficeGetRequest-2"
+                    }
+                }, {
+                    "name": "deactivated_since",
+                    "in": "query",
+                    "description": "any Office objects deactivated after this Unix timestamp will be returned in the response. If no deactivated_since parameter is included in the request, only Office objects deactivated in the last seven days will be returned.",
+                    "schema": {
+                        "$ref": "#/components/schemas/OfficeGetRequest-3"
+                    }
+                }, {
+                    "name": "parent_company_id",
+                    "in": "query",
+                    "description": "This is the numeric_id or moxi_works_company_id of a company that is considered to be a parent company in the MoxiWorks Platform. This request attribute has two functions:\n\n1. It provides for a broad scope by which partners may be afforded permissions to perform MoxiWorks Platform actions, in scenarios where a partner does business with a parent company in the MoxiWorks System.\n2. It provides broad scope under which agents may be looked up using the source_agent_id request attribute in many scenarios across different MoxiWorks Platform endpoints and actions.\n\nPlease note that this attribute cannot be used as a replacement for the moxi_works_company_id request attribute in scenarios where the moxi_works_company_id request attribute is required by the action.\n\nPlease note that this attribute cannot be used to broaden scope of any request where the scope of the request is defined by the moxi_works_company_id request attribute.\n\nPlease note that when passed in conjunction with the moxi_works_company_id request attribute, the value of moxi_works_company_id request attribute must be the numeric id form.\n\nAny use of this request attribute must be coordinated with MoxiWorks Platform Partner services. Please reach out to partner services for more information.",
+                    "schema": {
+                        "$ref": "#/components/schemas/OfficeGetRequest-4"
+                    }
+                }, {
+                    "name": "deactivated_since",
+                    "in": "query",
+                    "description": "any Office objects deactivated after this Unix timestamp will be returned in the response. If no deactivated_since parameter is included in the request, only Office objects deactivated in the last seven days will be returned.",
+                    "schema": {
+                        "$ref": "#/components/schemas/OfficeGetRequest-5"
+                    }
+                }, {
+                    "name": "timestamps_only",
+                    "in": "query",
+                    "description": "If supplied then the results will exclude all data except primary identifiers and a unix timestamp (last_updated) & iso8601 timestamp (modification_timestamp) of the last time this record was updated.",
+                    "schema": {
+                        "$ref": "#/components/schemas/OfficeGetRequest-6"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Offices"
+                                },
+                                "example": {
+                                    "page_number": 0,
+                                    "total_pages": 0,
+                                    "offices": [{
+                                        "moxi_works_office_id": "string",
+                                        "id": "string",
+                                        "client_office_id": "string",
+                                        "image_url": "string",
+                                        "name": "string",
+                                        "common_name": "string",
+                                        "address": "string",
+                                        "address2": {},
+                                        "city": "string",
+                                        "county": "string",
+                                        "state": "string",
+                                        "zip_code": "string",
+                                        "alt_phone": "string",
+                                        "email": "string",
+                                        "facebook": {},
+                                        "google_plus": {},
+                                        "phone": "string",
+                                        "timezone": "string",
+                                        "twitter": {},
+                                        "office_website": "string",
+                                        "region": "string",
+                                        "mailing_address": "string",
+                                        "mailing_address2": "string",
+                                        "mailing_city": "string",
+                                        "mailing_zip": "string",
+                                        "mailing_state": "string",
+                                        "company_programs": ["string"],
+                                        "logo_url": "string"
+                                    }]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/offices/{moxi_works_office_id}": {
+            "get": {
+                "summary": "office",
+                "description": "MoxiWorks Platform Office entities represent brokerage offices.",
+                "operationId": "office",
+                "parameters": [{
+                    "name": "moxi_works_office_id",
+                    "in": "path",
+                    "description": "A valid MoxiWorks Company ID. Use Company Endpoint to determine what moxi_works_company_id you can use.",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/components/schemas/Office-moxi_works_office_id-GetRequest"
+                    }
+                }, {
+                    "name": "moxi_works_company_id",
+                    "in": "query",
+                    "description": "A valid MoxiWorks Company ID. Use Company Endpoint to determine what moxi_works_company_id you can use.",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/components/schemas/Office-moxi_works_office_id-GetRequest-1"
+                    }
+                }, {
+                    "name": "parent_company_id",
+                    "in": "query",
+                    "description": "This is the numeric_id or moxi_works_company_id of a company that is considered to be a parent company in the MoxiWorks Platform. This request attribute has two functions:\n\n1. It provides for a broad scope by which partners may be afforded permissions to perform MoxiWorks Platform actions, in scenarios where a partner does business with a parent company in the MoxiWorks System.\n2. It provides broad scope under which agents may be looked up using the source_agent_id request attribute in many scenarios across different MoxiWorks Platform endpoints and actions.\n\nPlease note that this attribute cannot be used as a replacement for the moxi_works_company_id request attribute in scenarios where the moxi_works_company_id request attribute is required by the action.\n\nPlease note that this attribute cannot be used to broaden scope of any request where the scope of the request is defined by the moxi_works_company_id request attribute.\n\nPlease note that when passed in conjunction with the moxi_works_company_id request attribute, the value of moxi_works_company_id request attribute must be the numeric id form.\n\nAny use of this request attribute must be coordinated with MoxiWorks Platform Partner services. Please reach out to partner services for more information.",
+                    "schema": {
+                        "$ref": "#/components/schemas/Office-moxi_works_office_id-GetRequest-2"
+                    }
+                }, {
+                    "name": "moxi_works_office_id",
+                    "in": "query",
+                    "description": "A valid MoxiWorks Office ID. Use Office Index Endpoint for a list of all Office objects associated with a Company or use the moxi_works_office_id attribute returned in an Agent response.",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/components/schemas/Office-moxi_works_office_id-GetRequest-3"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Office"
+                                },
+                                "example": {
+                                    "moxi_works_office_id": "string",
+                                    "id": "string",
+                                    "client_office_id": "string",
+                                    "image_url": "string",
+                                    "name": "string",
+                                    "common_name": "string",
+                                    "address": "string",
+                                    "address2": {},
+                                    "city": "string",
+                                    "county": "string",
+                                    "state": "string",
+                                    "zip_code": "string",
+                                    "alt_phone": "string",
+                                    "email": "string",
+                                    "facebook": {},
+                                    "google_plus": {},
+                                    "phone": "string",
+                                    "timezone": "string",
+                                    "twitter": {},
+                                    "office_website": "string",
+                                    "region": "string",
+                                    "mailing_address": "string",
+                                    "mailing_address2": "string",
+                                    "mailing_city": "string",
+                                    "mailing_zip": "string",
+                                    "mailing_state": "string",
+                                    "company_programs": ["string"],
+                                    "logo_url": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/listings/{moxi_works_listing_id}": {
+            "get": {
+                "summary": "listing",
+                "description": "listing",
+                "operationId": "listing",
+                "parameters": [{
+                    "name": "moxi_works_listing_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/components/schemas/Listing-moxi_works_listing_id-GetRequest"
+                    }
+                }, {
+                    "name": "moxi_works_company_id",
+                    "in": "query",
+                    "description": "A valid MoxiWorks Company ID. Use Company Endpoint to determine what moxi_works_company_id you can use.",
+                    "schema": {
+                        "$ref": "#/components/schemas/Listing-moxi_works_listing_id-GetRequest-1"
+                    }
+                }, {
+                    "name": "parent_company_id",
+                    "in": "query",
+                    "description": "This is the numeric_id or moxi_works_company_id of a company that is considered to be a parent company in the MoxiWorks Platform. This request attribute has two functions:\n\n1. It provides for a broad scope by which partners may be afforded permissions to perform MoxiWorks Platform actions, in scenarios where a partner does business with a parent company in the MoxiWorks System.\n2. It provides broad scope under which agents may be looked up using the source_agent_id request attribute in many scenarios across different MoxiWorks Platform endpoints and actions.\n\nPlease note that this attribute cannot be used as a replacement for the moxi_works_company_id request attribute in scenarios where the moxi_works_company_id request attribute is required by the action.\n\nPlease note that this attribute cannot be used to broaden scope of any request where the scope of the request is defined by the moxi_works_company_id request attribute.\n\nPlease note that when passed in conjunction with the moxi_works_company_id request attribute, the value of moxi_works_company_id request attribute must be the numeric id form.\n\nAny use of this request attribute must be coordinated with MoxiWorks Platform Partner services. Please reach out to partner services for more information.",
+                    "schema": {
+                        "$ref": "#/components/schemas/Listing-moxi_works_listing_id-GetRequest-2"
+                    }
+                }, {
+                    "name": "moxi_works_listing_id",
+                    "in": "query",
+                    "description": "his is the MoxiWorks Platform ID of the Listing which you are requesting to Show. This data is required and must reference a valid MoxiWorks Listing ID for your Show request to be accepted.",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/components/schemas/Listing-moxi_works_listing_id-GetRequest-3"
+                    }
+                }, {
+                    "name": "underscore_response",
+                    "in": "query",
+                    "description": "When this attribute is passed as true, the json keys of the response will be underscored. The default json key format for listing responses is camel casing.",
+                    "schema": {
+                        "$ref": "#/components/schemas/Listing-moxi_works_listing_id-GetRequest-4"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Listing"
+                                },
+                                "example": {
+                                    "LotSizeAcres": 0,
+                                    "BathroomsFull": 0,
+                                    "BathroomsHalf": 0,
+                                    "BathroomsOneQuarter": {},
+                                    "BathroomsPartial": {},
+                                    "BathroomsThreeQuarter": {},
+                                    "BathroomsTotalInteger": 0,
+                                    "BathroomsTotal": 0,
+                                    "BedroomsTotal": 0,
+                                    "PublicTitle": "string",
+                                    "PublicRemarks": "string",
+                                    "ModificationTimestamp": "string",
+                                    "StatusChangeDate": "string",
+                                    "InternetAddressDisplayYN": true,
+                                    "DaysOnMarket": 0,
+                                    "ListingContractDate": "string",
+                                    "CreatedDate": "string",
+                                    "ElementarySchool": "string",
+                                    "GarageSpaces": 0,
+                                    "WaterfrontYN": true,
+                                    "HighSchool": "string",
+                                    "AssociationFee": {},
+                                    "ListOfficeName": "string",
+                                    "ListPrice": 0,
+                                    "ListingID": "string",
+                                    "ListAgentFullName": "string",
+                                    "ListAgentUUID": "string",
+                                    "ListAgentOfficeID": "string",
+                                    "ListAgentMoxiWorksOfficeID": "string",
+                                    "SecondaryListAgentFullName": "string",
+                                    "SecondaryListAgentUUID": "string",
+                                    "SchoolDistrict": "string",
+                                    "Address": "string",
+                                    "Address2": {},
+                                    "City": "string",
+                                    "CountyOrParish": "string",
+                                    "Latitude": "string",
+                                    "Longitude": "string",
+                                    "StateOrProvince": "string",
+                                    "PostalCode": "string",
+                                    "Community": "string",
+                                    "LotSizeSquareFeet": {},
+                                    "InternetEntireListingDisplayYN": true,
+                                    "MiddleOrJuniorSchool": "string",
+                                    "ListOfficeAOR": "string",
+                                    "ListOfficeAORArea": "string",
+                                    "PoolYN": true,
+                                    "PropertyType": "string",
+                                    "TaxAnnualAmount": 0,
+                                    "TaxYear": 0,
+                                    "SingleStory": true,
+                                    "LivingArea": 0,
+                                    "ViewYN": true,
+                                    "YearBuilt": 0,
+                                    "OnMarket": true,
+                                    "Status": "string",
+                                    "MoxiWorksListingId": "string",
+                                    "AgentCreatedListing": true,
+                                    "VirtualTourURL": "string",
+                                    "SharedPartnerData": {
+                                        "attribute_1": "string",
+                                        "attribute_2": "string"
+                                    },
+                                    "TaxParcelId": "string",
+                                    "ListingURL": "string",
+                                    "PropertyFeatures": [{
+                                        "PropertyFeatureName": "string",
+                                        "PropertyFeatureValues": ["string"]
+                                    }],
+                                    "CompanyListingAttributes": [{
+                                        "AttributeId": "string",
+                                        "AttributeName": "string"
+                                    }],
+                                    "OpenHouse": [{
+                                        "Date": "string",
+                                        "StartTime": "string",
+                                        "EndTime": "string",
+                                        "VirtualOpenHouseYN": true,
+                                        "VirtualOpenHouseURL": {},
+                                        "Comment": {}
+                                    }],
+                                    "ImagesLastModified": "string",
+                                    "ListingImages": [{
+                                        "FullURL": "string",
+                                        "GalleryURL": "string",
+                                        "RawURL": "string",
+                                        "SmallURL": "string",
+                                        "ThumbURL": "string",
+                                        "Title": "string",
+                                        "IsMainListingImage": true,
+                                        "Caption": "string",
+                                        "Description": "string",
+                                        "Width": 0,
+                                        "Height": 0,
+                                        "MimeType": "string"
+                                    }],
+                                    "BuyerCommissionType": "string",
+                                    "BuyerCommissionValue": "string",
+                                    "VendorModificationTimestamp": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/listings": {
+            "get": {
+                "summary": "listings",
+                "description": "listings",
+                "operationId": "listings",
+                "parameters": [{
+                    "name": "moxi_works_company_id",
+                    "in": "query",
+                    "description": "A valid MoxiWorks Company ID. Use Company Endpoint to determine what moxi_works_company_id you can use.",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/components/schemas/ListingGetRequest"
+                    }
+                }, {
+                    "name": "parent_company_id",
+                    "in": "query",
+                    "description": "This is the numeric_id or moxi_works_company_id of a company that is considered to be a parent company in the MoxiWorks Platform. This request attribute has two functions:\n\n1. It provides for a broad scope by which partners may be afforded permissions to perform MoxiWorks Platform actions, in scenarios where a partner does business with a parent company in the MoxiWorks System.\n2. It provides broad scope under which agents may be looked up using the source_agent_id request attribute in many scenarios across different MoxiWorks Platform endpoints and actions.\n\nPlease note that this attribute cannot be used as a replacement for the moxi_works_company_id request attribute in scenarios where the moxi_works_company_id request attribute is required by the action.\n\nPlease note that this attribute cannot be used to broaden scope of any request where the scope of the request is defined by the moxi_works_company_id request attribute.\n\nPlease note that when passed in conjunction with the moxi_works_company_id request attribute, the value of moxi_works_company_id request attribute must be the numeric id form.\n\nAny use of this request attribute must be coordinated with MoxiWorks Platform Partner services. Please reach out to partner services for more information.",
+                    "schema": {
+                        "$ref": "#/components/schemas/ListingGetRequest-1"
+                    }
+                }, {
+                    "name": "updated_since",
+                    "in": "query",
+                    "description": "Paged responses of all Listing objects updated after this Unix timestamp will be returned in the response. If no updated_since parameter is included in the request, only Listing objects updated in the last seven days will be returned.",
+                    "schema": {
+                        "$ref": "#/components/schemas/ListingGetRequest-2"
+                    }
+                }, {
+                    "name": "agent_uuid",
+                    "in": "query",
+                    "description": "This is the MoxiWorks Platform ID of the Agent which Listing objects are associated with. This will be an RFC 4122 compliant UUID.",
+                    "schema": {
+                        "$ref": "#/components/schemas/ListingGetRequest-3"
+                    }
+                }, {
+                    "name": "moxi_works_agent_id",
+                    "in": "query",
+                    "description": "Use this parameter when searching for Listing objects associated with a specific Agent. This will be a string that may take the form of an email address, or a unique identification string. This data must reference a valid MoxiWorks Agent ID for your Listing Index request to be accepted.\n\nA company’s internal agent id may be used to construct the agent’s unique identification string. To do so, the value passed via the moxi_works_agent_id should be a single concatenated string, of the form:\n[moxi_works_company_id]:[internal_agent_id]\nUse Company Endpoint to determine which moxi_works_company_id to use.",
+                    "schema": {
+                        "$ref": "#/components/schemas/ListingGetRequest-4"
+                    }
+                }, {
+                    "name": "moxi_works_office_id",
+                    "in": "query",
+                    "description": "Use this parameter when searching for Listing objects associated with a specific Office. This data must reference a valid MoxiWorks Office ID for your Listing Index request to be accepted.",
+                    "schema": {
+                        "$ref": "#/components/schemas/ListingGetRequest-5"
+                    }
+                }, {
+                    "name": "last_moxi_works_listing_id",
+                    "in": "query",
+                    "description": "If fetching a multi-page response, this should be the MoxiWorksListingId found in the last Listing object of the previously fetched page.",
+                    "schema": {
+                        "$ref": "#/components/schemas/ListingGetRequest-6"
+                    }
+                }, {
+                    "name": "shared_partner_data_updated_since",
+                    "in": "query",
+                    "description": "Include additional listings using this unix timestamp representing the date since partner data has been updated. This attribute should be used in conjuncion with the updated_since attribute.",
+                    "schema": {
+                        "$ref": "#/components/schemas/ListingGetRequest-7"
+                    }
+                }, {
+                    "name": "market_status",
+                    "in": "query",
+                    "description": "When filtering by market_status use one of the following options:\n\nValue\tDescription\non-market\t\nThe default value for market_status. This listing set includes ‘Active,’ ‘Pending’ and ‘Contingent’ listings.\noff-market\t\nIf market_status is set to this value, only off-market listings will be returned.\nall\t\nWhen market_status is set to this value, both off-market and on-market listings will be returned.",
+                    "schema": {
+                        "$ref": "#/components/schemas/ListingGetRequest-8"
+                    }
+                }, {
+                    "name": "property_types",
+                    "in": "query",
+                    "description": "When filtering by property_types pass a comma separated string of integers associated with various property types.\nWhen property_types is not inlcuded, all property types will be included in the response.\n\nUse this legend to determine which integer values to include in property_types.\n\nNumber\tProperty Type\n-1\t\nNot Found\n1\t\nResidential\n2\t\nCondo\n3\t\nLand\n4\t\nMfghome\n5\t\nFarm/Ranch\n6\t\nRental\n7\t\nMultifamily\n8\t\nCo-op\n9\t\nTownhouse\n10\t\nCommerical\n11\t\nBusiness Opportunity\n12\t\nCommercial Res Income\n13\t\nCommercial Hotel\n14\t\nCommercial Mobile Home Park\n15\t\nCommercial Lease\n16\t\nCommercial Land\n17\t\nMoorage\n18\t\nTimeshare\n19\t\nCommercial Industrial\n20\t\nMultifamily2_4\n21\t\nMultifamily5up\n22\t\nApartment\n23\t\nHighrise",
+                    "schema": {
+                        "$ref": "#/components/schemas/ListingGetRequest-9"
+                    }
+                }, {
+                    "name": "only_agent_created",
+                    "in": "query",
+                    "description": "When this filter parameter is passed as true, the response will be restricted to listings created by agents (non-mls listings).",
+                    "schema": {
+                        "$ref": "#/components/schemas/ListingGetRequest-10"
+                    }
+                }, {
+                    "name": "coming_soon",
+                    "in": "query",
+                    "description": "When this attribute is passed as true only listings with status “ComingSoon” will be returned.",
+                    "schema": {
+                        "$ref": "#/components/schemas/ListingGetRequest-11"
+                    }
+                }, {
+                    "name": "underscore_response",
+                    "in": "query",
+                    "description": "When this attribute is passed as true, the json keys of the response will be underscored. The default json key format for listing responses is camel casing.",
+                    "schema": {
+                        "$ref": "#/components/schemas/ListingGetRequest-12"
+                    }
+                }, {
+                    "name": "timestamps_only",
+                    "in": "query",
+                    "description": "If supplied then the results will exclude all data except primary identifiers and a unix timestamp (last_updated) & iso8601 timestamp (modification_timestamp) of the last time this record was updated.",
+                    "schema": {
+                        "$ref": "#/components/schemas/ListingGetRequest-13"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Listings__OnMarket_"
+                                },
+                                "example": {
+                                    "FinalPage": true,
+                                    "Listings": [{
+                                        "LotSizeAcres": 0,
+                                        "BathroomsFull": 0,
+                                        "BathroomsHalf": 0,
+                                        "BathroomsOneQuarter": {},
+                                        "BathroomsPartial": {},
+                                        "BathroomsThreeQuarter": {},
+                                        "BathroomsTotalInteger": 0,
+                                        "BathroomsTotal": 0,
+                                        "BedroomsTotal": 0,
+                                        "PublicTitle": "string",
+                                        "PublicRemarks": "string",
+                                        "ModificationTimestamp": "string",
+                                        "StatusChangeDate": "string",
+                                        "InternetAddressDisplayYN": true,
+                                        "DaysOnMarket": 0,
+                                        "ListingContractDate": "string",
+                                        "CreatedDate": "string",
+                                        "ElementarySchool": "string",
+                                        "GarageSpaces": 0,
+                                        "WaterfrontYN": true,
+                                        "HighSchool": "string",
+                                        "AssociationFee": {},
+                                        "ListOfficeName": "string",
+                                        "ListPrice": 0,
+                                        "ListingID": "string",
+                                        "ListAgentFullName": "string",
+                                        "ListAgentUUID": "string",
+                                        "ListAgentOfficeID": "string",
+                                        "ListAgentMoxiWorksOfficeID": "string",
+                                        "SecondaryListAgentFullName": "string",
+                                        "SecondaryListAgentUUID": "string",
+                                        "SchoolDistrict": "string",
+                                        "Address": "string",
+                                        "Address2": {},
+                                        "City": "string",
+                                        "CountyOrParish": "string",
+                                        "Latitude": "string",
+                                        "Longitude": "string",
+                                        "StateOrProvince": "string",
+                                        "PostalCode": "string",
+                                        "Community": "string",
+                                        "LotSizeSquareFeet": {},
+                                        "InternetEntireListingDisplayYN": true,
+                                        "MiddleOrJuniorSchool": "string",
+                                        "ListOfficeAOR": "string",
+                                        "ListOfficeAORArea": "string",
+                                        "NewConstructionYN": true,
+                                        "PoolYN": true,
+                                        "PropertyType": "string",
+                                        "TaxAnnualAmount": 0,
+                                        "TaxYear": 0,
+                                        "SingleStory": true,
+                                        "LivingArea": 0,
+                                        "ViewYN": true,
+                                        "YearBuilt": 0,
+                                        "OnMarket": true,
+                                        "Status": "string",
+                                        "MoxiWorksListingId": "string",
+                                        "AgentCreatedListing": true,
+                                        "VirtualTourURL": "string",
+                                        "SharedPartnerData": {
+                                            "attribute_1": "string",
+                                            "attribute_2": "string"
+                                        },
+                                        "TaxParcelId": "string",
+                                        "ListingURL": "string",
+                                        "PropertyFeatures": [{
+                                            "PropertyFeatureName": "string",
+                                            "PropertyFeatureValues": ["string"]
+                                        }],
+                                        "CompanyListingAttributes": [{
+                                            "AttributeId": "string",
+                                            "AttributeName": "string"
+                                        }],
+                                        "OpenHouse": [{
+                                            "Date": "string",
+                                            "StartTime": "string",
+                                            "EndTime": "string",
+                                            "VirtualOpenHouseYN": true,
+                                            "VirtualOpenHouseURL": {},
+                                            "Comment": {}
+                                        }],
+                                        "ImagesLastModified": "string",
+                                        "ListingImages": [{
+                                            "FullURL": "string",
+                                            "GalleryURL": "string",
+                                            "RawURL": "string",
+                                            "SmallURL": "string",
+                                            "ThumbURL": "string",
+                                            "Title": "string",
+                                            "IsMainListingImage": true,
+                                            "Caption": "string",
+                                            "Description": "string",
+                                            "Width": 0,
+                                            "Height": 0,
+                                            "MimeType": "string"
+                                        }],
+                                        "BuyerCommissionType": "string",
+                                        "BuyerCommissionValue": "string",
+                                        "VendorModificationTimestamp": "string"
+                                    }]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sold_listings": {
+            "get": {
+                "summary": "soldListings",
+                "description": "MoxiWorks Platform SoldListing entities represent a Brokerage’s sold listings.",
+                "operationId": "soldlistings",
+                "parameters": [{
+                    "name": "moxi_works_company_id",
+                    "in": "query",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }, {
+                    "name": "sold_since",
+                    "in": "query",
+                    "schema": {
+                        "type": "integer"
+                    }
+                }, {
+                    "name": "sold_before",
+                    "in": "query",
+                    "schema": {
+                        "type": "integer"
+                    }
+                }, {
+                    "name": "agent_uuid",
+                    "in": "query",
+                    "schema": {
+                        "type": "string"
+                    }
+                }, {
+                    "name": "moxi_works_agent_id",
+                    "in": "query",
+                    "schema": {
+                        "type": "string"
+                    }
+                }, {
+                    "name": "source_agent_id ",
+                    "in": "query",
+                    "schema": {
+                        "type": "string"
+                    }
+                }, {
+                    "name": "moxi_works_office_id",
+                    "in": "query",
+                    "schema": {
+                        "type": "string"
+                    }
+                }, {
+                    "name": "last_moxi_works_listing_id",
+                    "in": "query",
+                    "schema": {
+                        "type": "string"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Listings"
+                                },
+                                "example": {
+                                    "FinalPage": true,
+                                    "Listings": [{
+                                        "LotSizeAcres": 0,
+                                        "BathroomsFull": 0,
+                                        "BathroomsHalf": 0,
+                                        "BathroomsOneQuarter": {},
+                                        "BathroomsPartial": {},
+                                        "BathroomsThreeQuarter": {},
+                                        "BathroomsTotalInteger": 0,
+                                        "BathroomsTotal": 0,
+                                        "BedroomsTotal": 0,
+                                        "PublicTitle": "string",
+                                        "PublicRemarks": "string",
+                                        "ModificationTimestamp": "string",
+                                        "InternetAddressDisplayYN": true,
+                                        "DaysOnMarket": 0,
+                                        "ListingContractDate": "string",
+                                        "CreatedDate": "string",
+                                        "ElementarySchool": "string",
+                                        "GarageSpaces": 0,
+                                        "WaterfrontYN": true,
+                                        "HighSchool": "string",
+                                        "AssociationFee": {},
+                                        "ListOfficeName": "string",
+                                        "ListPrice": 0,
+                                        "ListingID": "string",
+                                        "ListAgentFullName": "string",
+                                        "ListAgentUUID": "string",
+                                        "ListAgentOfficeID": "string",
+                                        "ListAgentMoxiWorksOfficeID": "string",
+                                        "SecondaryListAgentFullName": "string",
+                                        "SecondaryListAgentUUID": "string",
+                                        "SchoolDistrict": "string",
+                                        "Address": "string",
+                                        "Address2": {},
+                                        "City": "string",
+                                        "CountyOrParish": "string",
+                                        "Latitude": "string",
+                                        "Longitude": "string",
+                                        "StateOrProvince": "string",
+                                        "PostalCode": "string",
+                                        "Community": "string",
+                                        "LotSizeSquareFeet": {},
+                                        "InternetEntireListingDisplayYN": true,
+                                        "MiddleOrJuniorSchool": "string",
+                                        "ListOfficeAOR": "string",
+                                        "ListOfficeAORArea": "string",
+                                        "PoolYN": true,
+                                        "PropertyType": "string",
+                                        "TaxAnnualAmount": 0,
+                                        "TaxYear": 0,
+                                        "SingleStory": true,
+                                        "LivingArea": 0,
+                                        "ViewYN": true,
+                                        "YearBuilt": 0,
+                                        "OnMarket": true,
+                                        "Status": "string",
+                                        "MoxiWorksListingId": "string",
+                                        "AgentCreatedListing": true,
+                                        "VirtualTourURL": "string",
+                                        "TaxParcelId": "string",
+                                        "ListingURL": "string",
+                                        "CompanyListingAttributes": [{
+                                            "AttributeId": "string",
+                                            "AttributeName": "string"
+                                        }],
+                                        "PropertyFeatures": [{
+                                            "PropertyFeatureName": "string",
+                                            "PropertyFeatureValues": ["string"]
+                                        }],
+                                        "OpenHouse": [{
+                                            "Date": "string",
+                                            "StartTime": "string",
+                                            "EndTime": "string"
+                                        }],
+                                        "ImagesLastModified": "string",
+                                        "ListingImages": [{
+                                            "FullURL": "string",
+                                            "GalleryURL": "string",
+                                            "RawURL": "string",
+                                            "SmallURL": "string",
+                                            "ThumbURL": "string",
+                                            "Title": "string",
+                                            "IsMainListingImage": true,
+                                            "Caption": "string",
+                                            "Description": "string",
+                                            "Width": 0,
+                                            "Height": 0,
+                                            "MimeType": "string"
+                                        }],
+                                        "SoldDate": "string",
+                                        "SoldPrice": 0,
+                                        "BuyerAgentFullName": "string",
+                                        "BuyerAgentUUID": "string",
+                                        "BuyerAgentOfficeName": "string",
+                                        "BuyerAgentOfficeID": "string",
+                                        "BuyerAgentMoxiWorksOfficeID": "string"
+                                    }]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sold_listings/{moxi_works_listing_id}": {
+            "get": {
+                "summary": "soldListing",
+                "description": "MoxiWorks Platform SoldListing entities represent a Brokerage’s sold listings.",
+                "operationId": "soldlisting",
+                "parameters": [{
+                    "name": "moxi_works_listing_id",
+                    "in": "path",
+                    "description": "This is the MoxiWorks Platform ID of the SoldListing which you are requesting to Show. This data is required and must reference a valid MoxiWorks SoldListing ID for your Show request to be accepted",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }, {
+                    "name": "moxi_works_company_id",
+                    "in": "query",
+                    "description": "A valid MoxiWorks Company ID. Use Company Endpoint to determine what moxi_works_company_id you can use.",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }, {
+                    "name": "moxi_works_listing_id",
+                    "in": "query",
+                    "description": "This is the MoxiWorks Platform ID of the SoldListing which you are requesting to Show. This data is required and must reference a valid MoxiWorks SoldListing ID for your Show request to be accepted.",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SoldListing"
+                                },
+                                "example": {
+                                    "LotSizeAcres": 0,
+                                    "BathroomsFull": 3,
+                                    "BathroomsHalf": 0,
+                                    "BathroomsOneQuarter": null,
+                                    "BathroomsPartial": null,
+                                    "BathroomsThreeQuarter": null,
+                                    "BathroomsTotalInteger": 3,
+                                    "BathroomsTotal": 3,
+                                    "BedroomsTotal": 8,
+                                    "PublicTitle": "Amazingly Remarkable!",
+                                    "PublicRemarks": "Publicalistically Remarkabalistically! REMARKABLE!!",
+                                    "ModificationTimestamp": "2018-03-20T18:04:55.6590000+00:00",
+                                    "InternetAddressDisplayYN": true,
+                                    "DaysOnMarket": 0,
+                                    "ListingContractDate": "2016-07-27",
+                                    "CreatedDate": "2016-11-01",
+                                    "ElementarySchool": "Elementary My Dear School",
+                                    "GarageSpaces": 4,
+                                    "WaterfrontYN": false,
+                                    "HighSchool": "Higher Than Junior",
+                                    "AssociationFee": null,
+                                    "ListOfficeName": "Realty Valley United",
+                                    "ListPrice": 599000,
+                                    "ListingID": "12323",
+                                    "ListAgentFullName": "Bob Agentson",
+                                    "ListAgentUUID": "8675309e9-1234-dead-beef-deadbeefdead",
+                                    "ListAgentOfficeID": "abc123",
+                                    "ListAgentMoxiWorksOfficeID": "abcd1234",
+                                    "SecondaryListAgentFullName": "Richard Agent",
+                                    "SecondaryListAgentUUID": "8675309e9-2345-dead-beef-deadbeefdead",
+                                    "SchoolDistrict": "Hilltop District",
+                                    "Address": "97 Hilltop Road",
+                                    "Address2": null,
+                                    "City": "Montecarlo",
+                                    "CountyOrParish": "Counting Parishes",
+                                    "Latitude": "47.723251",
+                                    "Longitude": "-122.171745",
+                                    "StateOrProvince": "NV",
+                                    "PostalCode": "87654",
+                                    "Community": "Shady Acres",
+                                    "LotSizeSquareFeet": null,
+                                    "InternetEntireListingDisplayYN": true,
+                                    "MiddleOrJuniorSchool": "*The* Junior High",
+                                    "ListOfficeAOR": "WHATEVERS MLS",
+                                    "ListOfficeAORArea": "Area 51",
+                                    "PoolYN": false,
+                                    "PropertyType": "Residential",
+                                    "TaxAnnualAmount": 13652,
+                                    "TaxYear": 2015,
+                                    "SingleStory": false,
+                                    "LivingArea": 3640,
+                                    "ViewYN": false,
+                                    "YearBuilt": 1989,
+                                    "OnMarket": true,
+                                    "Status": "active",
+                                    "MoxiWorksListingId": "abc123",
+                                    "AgentCreatedListing": false,
+                                    "VirtualTourURL": "http://the.virtual.tour.url",
+                                    "TaxParcelId": "9831200160",
+                                    "CompanyListingAttributes": [{
+                                        "AttributeId": "the collection",
+                                        "AttributeName": "The Collection"
+                                    }, {
+                                        "AttributeId": "destination",
+                                        "AttributeName": "Destination"
+                                    }],
+                                    "PropertyFeatures": [{
+                                        "PropertyFeatureName": "Kitchen Information",
+                                        "PropertyFeatureValues": ["Dishwasher", "Microwave", "Oven/Range Freestanding"]
+                                    }, {
+                                        "PropertyFeatureName": "Roof Description",
+                                        "PropertyFeatureValues": ["Comp Shingle"]
+                                    }, {
+                                        "PropertyFeatureName": "Number Of Stories",
+                                        "PropertyFeatureValues": ["Two Story"]
+                                    }, {
+                                        "PropertyFeatureName": "Interior Features",
+                                        "PropertyFeatureValues": ["Bath Master", "Broadband Internet", "Cable/Satellite Tv", "Dishwasher", "Microwave", "Oven/Range Freestanding"]
+                                    }],
+                                    "OpenHouse": [{
+                                        "Date": "2018-01-06",
+                                        "StartTime": "2026-03-13",
+                                        "EndTime": "2026-03-13"
+                                    }],
+                                    "ImagesLastModified": "2018-01-22",
+                                    "ListingImages": [{
+                                        "FullURL": "http://images.moxiworks.com/static/images/br/imagoo/default_property_image_wre-326x250.png",
+                                        "GalleryURL": "http://images.moxiworks.com/static/images/br/imagoo/default_property_image_wre-326x250.png",
+                                        "RawURL": "http://images.moxiworks.com/static/images/br/imagoo/default_property_image_wre-326x250.png",
+                                        "SmallURL": "http://images.moxiworks.com/static/images/br/imagoo/default_property_image_wre-326x250.png",
+                                        "ThumbURL": "http://images.moxiworks.com/static/images/br/imagoo/default_property_image_wre-326x250.png",
+                                        "Title": "Image Title",
+                                        "IsMainListingImage": true,
+                                        "Caption": "Image Caption",
+                                        "Description": "Image Description",
+                                        "Width": 1024,
+                                        "Height": 768,
+                                        "MimeType": "image/jpeg"
+                                    }],
+                                    "SoldDate": "2016-11-04",
+                                    "SoldPrice": 192349,
+                                    "BuyerAgentFullName": "Fred Agentguy",
+                                    "BuyerAgentUUID": "deadbeef-dead-beef-dead-beefdeadbeef",
+                                    "BuyerAgentOfficeName": "Super BuyerOffice",
+                                    "BuyerAgentOfficeID": "abc123",
+                                    "BuyerAgentMoxiWorksOfficeID": "deadbeef-dead-beef-deaddeaddead"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/teams/{moxi_works_team_id}": {
+            "get": {
+                "summary": "team",
+                "operationId": "team",
+                "parameters": [{
+                    "name": "moxi_works_team_id",
+                    "in": "path",
+                    "description": "A valid MoxiWorks Team ID. Use Team Index Endpoint for a list of all Team objects associated with a Company or use the moxi_works_team_id attribute returned in an Agent response.",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }, {
+                    "name": "moxi_works_company_id",
+                    "in": "query",
+                    "description": "A valid MoxiWorks Company ID. Use Company Endpoint to determine what moxi_works_company_id you can use.",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Team"
+                                },
+                                "example": {
+                                    "uuid": "feedface-dead-beef-aadf-baddeedc645",
+                                    "name": "New Team One",
+                                    "email": "email@address",
+                                    "address1": "1234 Here St.",
+                                    "address2": "Suite: 1234",
+                                    "city": "Sweetville",
+                                    "zipcode": "91820",
+                                    "state": "OR",
+                                    "phone": "666-555-1234",
+                                    "fax": "666-867-5309",
+                                    "logo_url": "http://website.url/logo.png",
+                                    "photo_url": "http://website.url/image.jpg",
+                                    "description": "This team is the teamisest",
+                                    "social_media_urls": null,
+                                    "alt_phone": "666-555-4444",
+                                    "alt_email": "alternate@email.address",
+                                    "website_url": "http://the.team.website",
+                                    "active": true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/teams": {
+            "get": {
+                "summary": "teams",
+                "operationId": "teams",
+                "parameters": [{
+                    "name": "moxi_works_company_id\t",
+                    "in": "query",
+                    "description": "A valid MoxiWorks Company ID. Use Company Endpoint to determine what moxi_works_company_id you can use.",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Teams"
+                                },
+                                "example": [{
+                                    "uuid": "feedface-dead-beef-aadf-baddeedc645",
+                                    "name": "New Team One",
+                                    "email": "email@address",
+                                    "address1": "1234 Here St.",
+                                    "address2": "Suite: 1234",
+                                    "city": "Sweetville",
+                                    "zipcode": "91820",
+                                    "state": "OR",
+                                    "phone": "666-555-1234",
+                                    "fax": "666-867-5309",
+                                    "logo_url": "http://website.url/logo.png",
+                                    "photo_url": "http://website.url/image.jpg",
+                                    "description": "",
+                                    "social_media_urls": null,
+                                    "alt_phone": "666-555-4444",
+                                    "alt_email": "alternate@email.address",
+                                    "website_url": "http://the.team.website",
+                                    "active": true
+                                }]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/companies/{moxi_works_company_id}": {
+            "get": {
+                "summary": "company",
+                "operationId": "company",
+                "parameters": [{
+                    "name": "moxi_works_company_id",
+                    "in": "path",
+                    "description": "A valid MoxiWorks Company ID. You can pass either the alphanumeric key (similar to the company name in most cases) or the numeric identifier (numeric_id in the company response).",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/company"
+                                },
+                                "example": {
+                                    "moxi_works_company_id": "string",
+                                    "name": "string",
+                                    "numeric_id": "string",
+                                    "client_company_id": "string",
+                                    "public_partner_attrs": {
+                                        "is_nrt": true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/companies": {
+            "get": {
+                "summary": "companies",
+                "operationId": "companies",
+                "parameters": [{
+                    "name": "moxi_works_company_id",
+                    "in": "query",
+                    "description": "This is the MoxiWorks Platform ID of the Company. This will be an alphanumeric identification string which will be similar to the company name.",
+                    "schema": {
+                        "type": "string"
+                    }
+                }, {
+                    "name": "numeric_id",
+                    "in": "query",
+                    "description": "This is the numeric company id that is interchangeable with the moxi_works_agent_id in all request scenarios",
+                    "schema": {
+                        "type": "string"
+                    }
+                }, {
+                    "name": "name",
+                    "in": "query",
+                    "description": "This is a human readable name of the company which this Company object represents.",
+                    "schema": {
+                        "type": "string"
+                    }
+                }, {
+                    "name": "client_company_id",
+                    "in": "query",
+                    "description": "This is a client-specified identifier of the company which this Company object represents, or null if absent.",
+                    "schema": {
+                        "type": "string"
+                    }
+                }, {
+                    "name": "public_partner_attrs",
+                    "in": "query",
+                    "description": "Exposed company attributes",
+                    "schema": {
+                        "type": "hash or null"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/companies"
+                                },
+                                "example": [{
+                                    "moxi_works_company_id": "string",
+                                    "name": "string",
+                                    "numeric_id": "string",
+                                    "client_company_id": "string",
+                                    "public_partner_attrs": {
+                                        "is_nrt": true
+                                    }
+                                }]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Agent": {
+                "type": "object",
+                "properties": {
+                    "moxi_works_agent_id": {
+                        "type": "string"
+                    },
+                    "agent_uuid": {
+                        "type": "string"
+                    },
+                    "client_id_1": {},
+                    "client_id_2": {
+                        "type": "string"
+                    },
+                    "client_auths": {
+                        "type": "array"
+                    },
+                    "facebook_account_id": {
+                        "type": "string"
+                    },
+                    "client_agent_id": {},
+                    "auth_client_id": {},
+                    "mls_agent_id": {},
+                    "license": {
+                        "type": "string"
+                    },
+                    "mls_name": {
+                        "type": "string"
+                    },
+                    "mls_abbreviation": {
+                        "type": "string"
+                    },
+                    "available_mls": {
+                        "type": "array",
+                        "items": {
+                            "required": ["name", "display_name", "mls_abbreviation", "agent_id"],
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "display_name": {
+                                    "type": "string"
+                                },
+                                "mls_abbreviation": {
+                                    "type": "string"
+                                },
+                                "agent_id": {}
+                            }
+                        }
+                    },
+                    "moxi_works_office_id": {
+                        "type": "string"
+                    },
+                    "office_id": {
+                        "type": "integer"
+                    },
+                    "office_name": {
+                        "type": "string"
+                    },
+                    "client_office_id": {
+                        "type": "string"
+                    },
+                    "company_id": {
+                        "type": "integer"
+                    },
+                    "client_company_id": {
+                        "type": "string"
+                    },
+                    "alternate_internal_office_id": {},
+                    "office_address_street": {
+                        "type": "string"
+                    },
+                    "office_address_street2": {},
+                    "office_address_city": {
+                        "type": "string"
+                    },
+                    "office_address_state": {
+                        "type": "string"
+                    },
+                    "office_address_zip": {
+                        "type": "string"
+                    },
+                    "office_mailing_address_street": {
+                        "type": "string"
+                    },
+                    "office_mailing_address_street2": {},
+                    "office_mailing_address_city": {
+                        "type": "string"
+                    },
+                    "office_mailing_address_state": {
+                        "type": "string"
+                    },
+                    "office_mailing_address_zip": {
+                        "type": "string"
+                    },
+                    "name": {},
+                    "first_name": {},
+                    "last_name": {},
+                    "nickname": {},
+                    "mobile_phone_number": {},
+                    "alt_phone_number": {},
+                    "fax_phone_number": {},
+                    "main_phone_number": {
+                        "type": "string"
+                    },
+                    "office_phone_number": {
+                        "type": "string"
+                    },
+                    "primary_email_address": {
+                        "type": "string"
+                    },
+                    "secondary_email_address": {
+                        "type": "string"
+                    },
+                    "lead_routing_email_address": {},
+                    "email_addresses": {
+                        "type": "object",
+                        "properties": {
+                            "primary": {
+                                "type": "string"
+                            },
+                            "display": {
+                                "type": "string"
+                            },
+                            "alternate": {
+                                "type": "string"
+                            },
+                            "moxi_sync": {
+                                "type": "string"
+                            },
+                            "zillow": {},
+                            "lead_routing": {}
+                        }
+                    },
+                    "bio": {},
+                    "title": {
+                        "type": "string"
+                    },
+                    "designations": {},
+                    "uuid": {
+                        "type": "string"
+                    },
+                    "has_product_access": {
+                        "type": "boolean"
+                    },
+                    "has_engage_access": {
+                        "type": "boolean"
+                    },
+                    "access_level": {
+                        "type": "string"
+                    },
+                    "view_level": {
+                        "type": "string"
+                    },
+                    "teams": {
+                        "type": "array"
+                    },
+                    "website_base_url": {},
+                    "twitter": {},
+                    "google_plus": {},
+                    "facebook": {},
+                    "instagram": {},
+                    "blogger": {},
+                    "youtube": {},
+                    "linked_in": {},
+                    "pinterest": {},
+                    "home_page": {
+                        "type": "string"
+                    },
+                    "profile_image_url": {
+                        "type": "string"
+                    },
+                    "profile_thumb_url": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "service_area_zip_codes": {
+                        "type": "array"
+                    },
+                    "agent_website": {
+                        "type": "object",
+                        "properties": {
+                            "base_url": {},
+                            "bio_page_slug": {}
+                        }
+                    },
+                    "alternate_offices": {
+                        "type": "array"
+                    },
+                    "partners": {
+                        "type": "array"
+                    },
+                    "company_programs": {
+                        "type": "array"
+                    },
+                    "source_metadata": {
+                        "type": "array",
+                        "items": {
+                            "required": ["identifier_source", "identifier_type", "identifier_key"],
+                            "type": "object",
+                            "properties": {
+                                "identifier_source": {
+                                    "type": "string"
+                                },
+                                "identifier_type": {
+                                    "type": "string"
+                                },
+                                "identifier_key": {}
+                            }
+                        }
+                    },
+                    "created_timestamp": {
+                        "type": "integer"
+                    },
+                    "deactivated_timestamp": {},
+                    "last_updated_timestamp": {
+                        "type": "integer"
+                    },
+                    "last_updated": {
+                        "type": "integer"
+                    },
+                    "modification_timestamp": {
+                        "type": "string"
+                    },
+                    "profile_visible_online": {
+                        "type": "boolean"
+                    },
+                    "languages": {
+                        "type": "array"
+                    },
+                    "user_reviews": {
+                        "type": "array"
+                    }
+                }
+            },
+            "api-key": {
+                "type": "object",
+                "properties": {
+                    "x-api-key": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Agents": {
+                "type": "array",
+                "items": {
+                    "required": ["moxi_works_agent_id", "agent_uuid", "client_id_1", "client_id_2", "client_auths", "facebook_account_id", "client_agent_id", "auth_client_id", "mls_agent_id", "license", "mls_name", "mls_abbreviation", "available_mls", "moxi_works_office_id", "office_id", "office_name", "client_office_id", "company_id", "client_company_id", "alternate_internal_office_id", "office_address_street", "office_address_street2", "office_address_city", "office_address_state", "office_address_zip", "office_mailing_address_street", "office_mailing_address_street2", "office_mailing_address_city", "office_mailing_address_state", "office_mailing_address_zip", "name", "first_name", "last_name", "nickname", "mobile_phone_number", "alt_phone_number", "fax_phone_number", "main_phone_number", "office_phone_number", "primary_email_address", "secondary_email_address", "lead_routing_email_address", "email_addresses", "bio", "title", "designations", "uuid", "has_product_access", "has_engage_access", "access_level", "view_level", "teams", "website_base_url", "twitter", "google_plus", "facebook", "instagram", "blogger", "youtube", "linked_in", "pinterest", "home_page", "profile_image_url", "profile_thumb_url", "region", "service_area_zip_codes", "agent_website", "alternate_offices", "partners", "company_programs", "source_metadata", "created_timestamp", "deactivated_timestamp", "last_updated_timestamp", "last_updated", "modification_timestamp", "profile_visible_online", "languages", "user_reviews"],
+                    "type": "object",
+                    "properties": {
+                        "moxi_works_agent_id": {
+                            "type": "string"
+                        },
+                        "agent_uuid": {
+                            "type": "string"
+                        },
+                        "client_id_1": {},
+                        "client_id_2": {
+                            "type": "string"
+                        },
+                        "client_auths": {
+                            "type": "array"
+                        },
+                        "facebook_account_id": {
+                            "type": "string"
+                        },
+                        "client_agent_id": {},
+                        "auth_client_id": {},
+                        "mls_agent_id": {},
+                        "license": {
+                            "type": "string"
+                        },
+                        "mls_name": {
+                            "type": "string"
+                        },
+                        "mls_abbreviation": {
+                            "type": "string"
+                        },
+                        "available_mls": {
+                            "type": "array",
+                            "items": {
+                                "required": ["name", "display_name", "mls_abbreviation", "agent_id"],
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "display_name": {
+                                        "type": "string"
+                                    },
+                                    "mls_abbreviation": {
+                                        "type": "string"
+                                    },
+                                    "agent_id": {}
+                                }
+                            }
+                        },
+                        "moxi_works_office_id": {
+                            "type": "string"
+                        },
+                        "office_id": {
+                            "type": "integer"
+                        },
+                        "office_name": {
+                            "type": "string"
+                        },
+                        "client_office_id": {
+                            "type": "string"
+                        },
+                        "company_id": {
+                            "type": "integer"
+                        },
+                        "client_company_id": {
+                            "type": "string"
+                        },
+                        "alternate_internal_office_id": {},
+                        "office_address_street": {
+                            "type": "string"
+                        },
+                        "office_address_street2": {},
+                        "office_address_city": {
+                            "type": "string"
+                        },
+                        "office_address_state": {
+                            "type": "string"
+                        },
+                        "office_address_zip": {
+                            "type": "string"
+                        },
+                        "office_mailing_address_street": {
+                            "type": "string"
+                        },
+                        "office_mailing_address_street2": {},
+                        "office_mailing_address_city": {
+                            "type": "string"
+                        },
+                        "office_mailing_address_state": {
+                            "type": "string"
+                        },
+                        "office_mailing_address_zip": {
+                            "type": "string"
+                        },
+                        "name": {},
+                        "first_name": {},
+                        "last_name": {},
+                        "nickname": {},
+                        "mobile_phone_number": {},
+                        "alt_phone_number": {},
+                        "fax_phone_number": {},
+                        "main_phone_number": {
+                            "type": "string"
+                        },
+                        "office_phone_number": {
+                            "type": "string"
+                        },
+                        "primary_email_address": {
+                            "type": "string"
+                        },
+                        "secondary_email_address": {
+                            "type": "string"
+                        },
+                        "lead_routing_email_address": {},
+                        "email_addresses": {
+                            "type": "object",
+                            "properties": {
+                                "primary": {
+                                    "type": "string"
+                                },
+                                "display": {
+                                    "type": "string"
+                                },
+                                "alternate": {
+                                    "type": "string"
+                                },
+                                "moxi_sync": {
+                                    "type": "string"
+                                },
+                                "zillow": {},
+                                "lead_routing": {}
+                            }
+                        },
+                        "bio": {},
+                        "title": {
+                            "type": "string"
+                        },
+                        "designations": {},
+                        "uuid": {
+                            "type": "string"
+                        },
+                        "has_product_access": {
+                            "type": "boolean"
+                        },
+                        "has_engage_access": {
+                            "type": "boolean"
+                        },
+                        "access_level": {
+                            "type": "string"
+                        },
+                        "view_level": {
+                            "type": "string"
+                        },
+                        "teams": {
+                            "type": "array"
+                        },
+                        "website_base_url": {},
+                        "twitter": {},
+                        "google_plus": {},
+                        "facebook": {},
+                        "instagram": {},
+                        "blogger": {},
+                        "youtube": {},
+                        "linked_in": {},
+                        "pinterest": {},
+                        "home_page": {
+                            "type": "string"
+                        },
+                        "profile_image_url": {
+                            "type": "string"
+                        },
+                        "profile_thumb_url": {
+                            "type": "string"
+                        },
+                        "region": {
+                            "type": "string"
+                        },
+                        "service_area_zip_codes": {
+                            "type": "array"
+                        },
+                        "agent_website": {
+                            "type": "object",
+                            "properties": {
+                                "base_url": {},
+                                "bio_page_slug": {}
+                            }
+                        },
+                        "alternate_offices": {
+                            "type": "array"
+                        },
+                        "partners": {
+                            "type": "array"
+                        },
+                        "company_programs": {
+                            "type": "array"
+                        },
+                        "source_metadata": {
+                            "type": "array",
+                            "items": {
+                                "required": ["identifier_source", "identifier_type", "identifier_key"],
+                                "type": "object",
+                                "properties": {
+                                    "identifier_source": {
+                                        "type": "string"
+                                    },
+                                    "identifier_type": {
+                                        "type": "string"
+                                    },
+                                    "identifier_key": {}
+                                }
+                            }
+                        },
+                        "created_timestamp": {
+                            "type": "integer"
+                        },
+                        "deactivated_timestamp": {},
+                        "last_updated_timestamp": {
+                            "type": "integer"
+                        },
+                        "last_updated": {
+                            "type": "integer"
+                        },
+                        "modification_timestamp": {
+                            "type": "string"
+                        },
+                        "profile_visible_online": {
+                            "type": "boolean"
+                        },
+                        "languages": {
+                            "type": "array"
+                        },
+                        "user_reviews": {
+                            "type": "array"
+                        }
+                    }
+                }
+            },
+            "Office": {
+                "type": "object",
+                "properties": {
+                    "moxi_works_office_id": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "client_office_id": {
+                        "type": "string"
+                    },
+                    "image_url": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "common_name": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "address2": {},
+                    "city": {
+                        "type": "string"
+                    },
+                    "county": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "zip_code": {
+                        "type": "string"
+                    },
+                    "alt_phone": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "facebook": {},
+                    "google_plus": {},
+                    "phone": {
+                        "type": "string"
+                    },
+                    "timezone": {
+                        "type": "string"
+                    },
+                    "twitter": {},
+                    "office_website": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "mailing_address": {
+                        "type": "string"
+                    },
+                    "mailing_address2": {
+                        "type": "string"
+                    },
+                    "mailing_city": {
+                        "type": "string"
+                    },
+                    "mailing_zip": {
+                        "type": "string"
+                    },
+                    "mailing_state": {
+                        "type": "string"
+                    },
+                    "company_programs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "logo_url": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Offices": {
+                "type": "object",
+                "properties": {
+                    "page_number": {
+                        "type": "integer"
+                    },
+                    "total_pages": {
+                        "type": "integer"
+                    },
+                    "offices": {
+                        "type": "array",
+                        "items": {
+                            "required": ["moxi_works_office_id", "id", "client_office_id", "image_url", "name", "common_name", "address", "address2", "city", "county", "state", "zip_code", "alt_phone", "email", "facebook", "google_plus", "phone", "timezone", "twitter", "office_website", "region", "mailing_address", "mailing_address2", "mailing_city", "mailing_zip", "mailing_state", "company_programs", "logo_url"],
+                            "type": "object",
+                            "properties": {
+                                "moxi_works_office_id": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "string"
+                                },
+                                "client_office_id": {
+                                    "type": "string"
+                                },
+                                "image_url": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "common_name": {
+                                    "type": "string"
+                                },
+                                "address": {
+                                    "type": "string"
+                                },
+                                "address2": {},
+                                "city": {
+                                    "type": "string"
+                                },
+                                "county": {
+                                    "type": "string"
+                                },
+                                "state": {
+                                    "type": "string"
+                                },
+                                "zip_code": {
+                                    "type": "string"
+                                },
+                                "alt_phone": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "facebook": {},
+                                "google_plus": {},
+                                "phone": {
+                                    "type": "string"
+                                },
+                                "timezone": {
+                                    "type": "string"
+                                },
+                                "twitter": {},
+                                "office_website": {
+                                    "type": "string"
+                                },
+                                "region": {
+                                    "type": "string"
+                                },
+                                "mailing_address": {
+                                    "type": "string"
+                                },
+                                "mailing_address2": {
+                                    "type": "string"
+                                },
+                                "mailing_city": {
+                                    "type": "string"
+                                },
+                                "mailing_zip": {
+                                    "type": "string"
+                                },
+                                "mailing_state": {
+                                    "type": "string"
+                                },
+                                "company_programs": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "logo_url": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Listing": {
+                "type": "object",
+                "properties": {
+                    "LotSizeAcres": {
+                        "type": "integer"
+                    },
+                    "BathroomsFull": {
+                        "type": "integer"
+                    },
+                    "BathroomsHalf": {
+                        "type": "integer"
+                    },
+                    "BathroomsOneQuarter": {},
+                    "BathroomsPartial": {},
+                    "BathroomsThreeQuarter": {},
+                    "BathroomsTotalInteger": {
+                        "type": "integer"
+                    },
+                    "BathroomsTotal": {
+                        "type": "integer"
+                    },
+                    "BedroomsTotal": {
+                        "type": "integer"
+                    },
+                    "PublicTitle": {
+                        "type": "string"
+                    },
+                    "PublicRemarks": {
+                        "type": "string"
+                    },
+                    "ModificationTimestamp": {
+                        "type": "string"
+                    },
+                    "StatusChangeDate": {
+                        "type": "string"
+                    },
+                    "InternetAddressDisplayYN": {
+                        "type": "boolean"
+                    },
+                    "DaysOnMarket": {
+                        "type": "integer"
+                    },
+                    "ListingContractDate": {
+                        "type": "string"
+                    },
+                    "CreatedDate": {
+                        "type": "string"
+                    },
+                    "ElementarySchool": {
+                        "type": "string"
+                    },
+                    "GarageSpaces": {
+                        "type": "integer"
+                    },
+                    "WaterfrontYN": {
+                        "type": "boolean"
+                    },
+                    "HighSchool": {
+                        "type": "string"
+                    },
+                    "AssociationFee": {},
+                    "ListOfficeName": {
+                        "type": "string"
+                    },
+                    "ListPrice": {
+                        "type": "integer"
+                    },
+                    "ListingID": {
+                        "type": "string"
+                    },
+                    "ListAgentFullName": {
+                        "type": "string"
+                    },
+                    "ListAgentUUID": {
+                        "type": "string"
+                    },
+                    "ListAgentOfficeID": {
+                        "type": "string"
+                    },
+                    "ListAgentMoxiWorksOfficeID": {
+                        "type": "string"
+                    },
+                    "SecondaryListAgentFullName": {
+                        "type": "string"
+                    },
+                    "SecondaryListAgentUUID": {
+                        "type": "string"
+                    },
+                    "SchoolDistrict": {
+                        "type": "string"
+                    },
+                    "Address": {
+                        "type": "string"
+                    },
+                    "Address2": {},
+                    "City": {
+                        "type": "string"
+                    },
+                    "CountyOrParish": {
+                        "type": "string"
+                    },
+                    "Latitude": {
+                        "type": "string"
+                    },
+                    "Longitude": {
+                        "type": "string"
+                    },
+                    "StateOrProvince": {
+                        "type": "string"
+                    },
+                    "PostalCode": {
+                        "type": "string"
+                    },
+                    "Community": {
+                        "type": "string"
+                    },
+                    "LotSizeSquareFeet": {},
+                    "InternetEntireListingDisplayYN": {
+                        "type": "boolean"
+                    },
+                    "MiddleOrJuniorSchool": {
+                        "type": "string"
+                    },
+                    "ListOfficeAOR": {
+                        "type": "string"
+                    },
+                    "ListOfficeAORArea": {
+                        "type": "string"
+                    },
+                    "PoolYN": {
+                        "type": "boolean"
+                    },
+                    "PropertyType": {
+                        "type": "string"
+                    },
+                    "TaxAnnualAmount": {
+                        "type": "integer"
+                    },
+                    "TaxYear": {
+                        "type": "integer"
+                    },
+                    "SingleStory": {
+                        "type": "boolean"
+                    },
+                    "LivingArea": {
+                        "type": "integer"
+                    },
+                    "ViewYN": {
+                        "type": "boolean"
+                    },
+                    "YearBuilt": {
+                        "type": "integer"
+                    },
+                    "OnMarket": {
+                        "type": "boolean"
+                    },
+                    "Status": {
+                        "type": "string"
+                    },
+                    "MoxiWorksListingId": {
+                        "type": "string"
+                    },
+                    "AgentCreatedListing": {
+                        "type": "boolean"
+                    },
+                    "VirtualTourURL": {
+                        "type": "string"
+                    },
+                    "SharedPartnerData": {
+                        "type": "object",
+                        "properties": {
+                            "attribute_1": {
+                                "type": "string"
+                            },
+                            "attribute_2": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "TaxParcelId": {
+                        "type": "string"
+                    },
+                    "ListingURL": {
+                        "type": "string"
+                    },
+                    "PropertyFeatures": {
+                        "type": "array",
+                        "items": {
+                            "required": ["PropertyFeatureName", "PropertyFeatureValues"],
+                            "type": "object",
+                            "properties": {
+                                "PropertyFeatureName": {
+                                    "type": "string"
+                                },
+                                "PropertyFeatureValues": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "CompanyListingAttributes": {
+                        "type": "array",
+                        "items": {
+                            "required": ["AttributeId", "AttributeName"],
+                            "type": "object",
+                            "properties": {
+                                "AttributeId": {
+                                    "type": "string"
+                                },
+                                "AttributeName": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "OpenHouse": {
+                        "type": "array",
+                        "items": {
+                            "required": ["Date", "StartTime", "EndTime", "VirtualOpenHouseYN", "VirtualOpenHouseURL", "Comment"],
+                            "type": "object",
+                            "properties": {
+                                "Date": {
+                                    "type": "string"
+                                },
+                                "StartTime": {
+                                    "type": "string"
+                                },
+                                "EndTime": {
+                                    "type": "string"
+                                },
+                                "VirtualOpenHouseYN": {
+                                    "type": "boolean"
+                                },
+                                "VirtualOpenHouseURL": {},
+                                "Comment": {}
+                            }
+                        }
+                    },
+                    "ImagesLastModified": {
+                        "type": "string"
+                    },
+                    "ListingImages": {
+                        "type": "array",
+                        "items": {
+                            "required": ["FullURL", "GalleryURL", "RawURL", "SmallURL", "ThumbURL", "Title", "IsMainListingImage", "Caption", "Description", "Width", "Height", "MimeType"],
+                            "type": "object",
+                            "properties": {
+                                "FullURL": {
+                                    "type": "string"
+                                },
+                                "GalleryURL": {
+                                    "type": "string"
+                                },
+                                "RawURL": {
+                                    "type": "string"
+                                },
+                                "SmallURL": {
+                                    "type": "string"
+                                },
+                                "ThumbURL": {
+                                    "type": "string"
+                                },
+                                "Title": {
+                                    "type": "string"
+                                },
+                                "IsMainListingImage": {
+                                    "type": "boolean"
+                                },
+                                "Caption": {
+                                    "type": "string"
+                                },
+                                "Description": {
+                                    "type": "string"
+                                },
+                                "Width": {
+                                    "type": "integer"
+                                },
+                                "Height": {
+                                    "type": "integer"
+                                },
+                                "MimeType": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "BuyerCommissionType": {
+                        "type": "string"
+                    },
+                    "BuyerCommissionValue": {
+                        "type": "string"
+                    },
+                    "VendorModificationTimestamp": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Listings__OnMarket_": {
+                "type": "object",
+                "properties": {
+                    "FinalPage": {
+                        "type": "boolean"
+                    },
+                    "Listings": {
+                        "type": "array",
+                        "items": {
+                            "required": ["LotSizeAcres", "BathroomsFull", "BathroomsHalf", "BathroomsOneQuarter", "BathroomsPartial", "BathroomsThreeQuarter", "BathroomsTotalInteger", "BathroomsTotal", "BedroomsTotal", "PublicTitle", "PublicRemarks", "ModificationTimestamp", "StatusChangeDate", "InternetAddressDisplayYN", "DaysOnMarket", "ListingContractDate", "CreatedDate", "ElementarySchool", "GarageSpaces", "WaterfrontYN", "HighSchool", "AssociationFee", "ListOfficeName", "ListPrice", "ListingID", "ListAgentFullName", "ListAgentUUID", "ListAgentOfficeID", "ListAgentMoxiWorksOfficeID", "SecondaryListAgentFullName", "SecondaryListAgentUUID", "SchoolDistrict", "Address", "Address2", "City", "CountyOrParish", "Latitude", "Longitude", "StateOrProvince", "PostalCode", "Community", "LotSizeSquareFeet", "InternetEntireListingDisplayYN", "MiddleOrJuniorSchool", "ListOfficeAOR", "ListOfficeAORArea", "NewConstructionYN", "PoolYN", "PropertyType", "TaxAnnualAmount", "TaxYear", "SingleStory", "LivingArea", "ViewYN", "YearBuilt", "OnMarket", "Status", "MoxiWorksListingId", "AgentCreatedListing", "VirtualTourURL", "SharedPartnerData", "TaxParcelId", "ListingURL", "PropertyFeatures", "CompanyListingAttributes", "OpenHouse", "ImagesLastModified", "ListingImages", "BuyerCommissionType", "BuyerCommissionValue", "VendorModificationTimestamp"],
+                            "type": "object",
+                            "properties": {
+                                "LotSizeAcres": {
+                                    "type": "integer"
+                                },
+                                "BathroomsFull": {
+                                    "type": "integer"
+                                },
+                                "BathroomsHalf": {
+                                    "type": "integer"
+                                },
+                                "BathroomsOneQuarter": {},
+                                "BathroomsPartial": {},
+                                "BathroomsThreeQuarter": {},
+                                "BathroomsTotalInteger": {
+                                    "type": "integer"
+                                },
+                                "BathroomsTotal": {
+                                    "type": "integer"
+                                },
+                                "BedroomsTotal": {
+                                    "type": "integer"
+                                },
+                                "PublicTitle": {
+                                    "type": "string"
+                                },
+                                "PublicRemarks": {
+                                    "type": "string"
+                                },
+                                "ModificationTimestamp": {
+                                    "type": "string"
+                                },
+                                "StatusChangeDate": {
+                                    "type": "string"
+                                },
+                                "InternetAddressDisplayYN": {
+                                    "type": "boolean"
+                                },
+                                "DaysOnMarket": {
+                                    "type": "integer"
+                                },
+                                "ListingContractDate": {
+                                    "type": "string"
+                                },
+                                "CreatedDate": {
+                                    "type": "string"
+                                },
+                                "ElementarySchool": {
+                                    "type": "string"
+                                },
+                                "GarageSpaces": {
+                                    "type": "integer"
+                                },
+                                "WaterfrontYN": {
+                                    "type": "boolean"
+                                },
+                                "HighSchool": {
+                                    "type": "string"
+                                },
+                                "AssociationFee": {},
+                                "ListOfficeName": {
+                                    "type": "string"
+                                },
+                                "ListPrice": {
+                                    "type": "integer"
+                                },
+                                "ListingID": {
+                                    "type": "string"
+                                },
+                                "ListAgentFullName": {
+                                    "type": "string"
+                                },
+                                "ListAgentUUID": {
+                                    "type": "string"
+                                },
+                                "ListAgentOfficeID": {
+                                    "type": "string"
+                                },
+                                "ListAgentMoxiWorksOfficeID": {
+                                    "type": "string"
+                                },
+                                "SecondaryListAgentFullName": {
+                                    "type": "string"
+                                },
+                                "SecondaryListAgentUUID": {
+                                    "type": "string"
+                                },
+                                "SchoolDistrict": {
+                                    "type": "string"
+                                },
+                                "Address": {
+                                    "type": "string"
+                                },
+                                "Address2": {},
+                                "City": {
+                                    "type": "string"
+                                },
+                                "CountyOrParish": {
+                                    "type": "string"
+                                },
+                                "Latitude": {
+                                    "type": "string"
+                                },
+                                "Longitude": {
+                                    "type": "string"
+                                },
+                                "StateOrProvince": {
+                                    "type": "string"
+                                },
+                                "PostalCode": {
+                                    "type": "string"
+                                },
+                                "Community": {
+                                    "type": "string"
+                                },
+                                "LotSizeSquareFeet": {},
+                                "InternetEntireListingDisplayYN": {
+                                    "type": "boolean"
+                                },
+                                "MiddleOrJuniorSchool": {
+                                    "type": "string"
+                                },
+                                "ListOfficeAOR": {
+                                    "type": "string"
+                                },
+                                "ListOfficeAORArea": {
+                                    "type": "string"
+                                },
+                                "NewConstructionYN": {
+                                    "type": "boolean"
+                                },
+                                "PoolYN": {
+                                    "type": "boolean"
+                                },
+                                "PropertyType": {
+                                    "type": "string"
+                                },
+                                "TaxAnnualAmount": {
+                                    "type": "integer"
+                                },
+                                "TaxYear": {
+                                    "type": "integer"
+                                },
+                                "SingleStory": {
+                                    "type": "boolean"
+                                },
+                                "LivingArea": {
+                                    "type": "integer"
+                                },
+                                "ViewYN": {
+                                    "type": "boolean"
+                                },
+                                "YearBuilt": {
+                                    "type": "integer"
+                                },
+                                "OnMarket": {
+                                    "type": "boolean"
+                                },
+                                "Status": {
+                                    "type": "string"
+                                },
+                                "MoxiWorksListingId": {
+                                    "type": "string"
+                                },
+                                "AgentCreatedListing": {
+                                    "type": "boolean"
+                                },
+                                "VirtualTourURL": {
+                                    "type": "string"
+                                },
+                                "SharedPartnerData": {
+                                    "type": "object",
+                                    "properties": {
+                                        "attribute_1": {
+                                            "type": "string"
+                                        },
+                                        "attribute_2": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "TaxParcelId": {
+                                    "type": "string"
+                                },
+                                "ListingURL": {
+                                    "type": "string"
+                                },
+                                "PropertyFeatures": {
+                                    "type": "array",
+                                    "items": {
+                                        "required": ["PropertyFeatureName", "PropertyFeatureValues"],
+                                        "type": "object",
+                                        "properties": {
+                                            "PropertyFeatureName": {
+                                                "type": "string"
+                                            },
+                                            "PropertyFeatureValues": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "CompanyListingAttributes": {
+                                    "type": "array",
+                                    "items": {
+                                        "required": ["AttributeId", "AttributeName"],
+                                        "type": "object",
+                                        "properties": {
+                                            "AttributeId": {
+                                                "type": "string"
+                                            },
+                                            "AttributeName": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "OpenHouse": {
+                                    "type": "array",
+                                    "items": {
+                                        "required": ["Date", "StartTime", "EndTime", "VirtualOpenHouseYN", "VirtualOpenHouseURL", "Comment"],
+                                        "type": "object",
+                                        "properties": {
+                                            "Date": {
+                                                "type": "string"
+                                            },
+                                            "StartTime": {
+                                                "type": "string"
+                                            },
+                                            "EndTime": {
+                                                "type": "string"
+                                            },
+                                            "VirtualOpenHouseYN": {
+                                                "type": "boolean"
+                                            },
+                                            "VirtualOpenHouseURL": {},
+                                            "Comment": {}
+                                        }
+                                    }
+                                },
+                                "ImagesLastModified": {
+                                    "type": "string"
+                                },
+                                "ListingImages": {
+                                    "type": "array",
+                                    "items": {
+                                        "required": ["FullURL", "GalleryURL", "RawURL", "SmallURL", "ThumbURL", "Title", "IsMainListingImage", "Caption", "Description", "Width", "Height", "MimeType"],
+                                        "type": "object",
+                                        "properties": {
+                                            "FullURL": {
+                                                "type": "string"
+                                            },
+                                            "GalleryURL": {
+                                                "type": "string"
+                                            },
+                                            "RawURL": {
+                                                "type": "string"
+                                            },
+                                            "SmallURL": {
+                                                "type": "string"
+                                            },
+                                            "ThumbURL": {
+                                                "type": "string"
+                                            },
+                                            "Title": {
+                                                "type": "string"
+                                            },
+                                            "IsMainListingImage": {
+                                                "type": "boolean"
+                                            },
+                                            "Caption": {
+                                                "type": "string"
+                                            },
+                                            "Description": {
+                                                "type": "string"
+                                            },
+                                            "Width": {
+                                                "type": "integer"
+                                            },
+                                            "Height": {
+                                                "type": "integer"
+                                            },
+                                            "MimeType": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "BuyerCommissionType": {
+                                    "type": "string"
+                                },
+                                "BuyerCommissionValue": {
+                                    "type": "string"
+                                },
+                                "VendorModificationTimestamp": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-apim-schema-name": "Listings (OnMarket)"
+            },
+            "Listings__OffMarket_": {
+                "type": "object",
+                "properties": {
+                    "LotSizeAcres": {},
+                    "BathroomsFull": {},
+                    "BathroomsHalf": {},
+                    "BathroomsOneQuarter": {},
+                    "BathroomsPartial": {},
+                    "BathroomsThreeQuarter": {},
+                    "BathroomsTotalInteger": {},
+                    "BathroomsTotal": {},
+                    "BedroomsTotal": {},
+                    "PublicTitle": {},
+                    "PublicRemarks": {},
+                    "ModificationTimestamp": {
+                        "type": "string"
+                    },
+                    "StatusChangeDate": {
+                        "type": "string"
+                    },
+                    "InternetAddressDisplayYN": {},
+                    "DaysOnMarket": {
+                        "type": "integer"
+                    },
+                    "ListingContractDate": {},
+                    "CreatedDate": {},
+                    "ElementarySchool": {},
+                    "GarageSpaces": {},
+                    "WaterfrontYN": {},
+                    "HighSchool": {},
+                    "AssociationFee": {},
+                    "ListOfficeName": {},
+                    "ListPrice": {},
+                    "ListingID": {
+                        "type": "string"
+                    },
+                    "ListAgentFullName": {},
+                    "ListAgentUUID": {},
+                    "ListAgentOfficeID": {},
+                    "ListAgentMoxiWorksOfficeID": {},
+                    "SecondaryListAgentFullName": {},
+                    "SecondaryListAgentUUID": {},
+                    "SchoolDistrict": {},
+                    "Address": {},
+                    "Address2": {},
+                    "City": {},
+                    "CountyOrParish": {},
+                    "Latitude": {},
+                    "Longitude": {},
+                    "StateOrProvince": {},
+                    "PostalCode": {},
+                    "Community": {},
+                    "LotSizeSquareFeet": {},
+                    "InternetEntireListingDisplayYN": {},
+                    "MiddleOrJuniorSchool": {},
+                    "ListOfficeAOR": {
+                        "type": "string"
+                    },
+                    "ListOfficeAORArea": {},
+                    "NewConstructionYN": {},
+                    "PoolYN": {},
+                    "PropertyType": {},
+                    "TaxAnnualAmount": {},
+                    "TaxYear": {},
+                    "SingleStory": {},
+                    "LivingArea": {},
+                    "ViewYN": {},
+                    "YearBuilt": {},
+                    "OnMarket": {
+                        "type": "boolean"
+                    },
+                    "Status": {
+                        "type": "string"
+                    },
+                    "MoxiWorksListingId": {
+                        "type": "string"
+                    },
+                    "ShortMoxiWorksListingId": {
+                        "type": "integer"
+                    },
+                    "AgentCreatedListing": {},
+                    "VirtualTourURL": {},
+                    "SharedPartnerData": {},
+                    "ListingURL": {},
+                    "CompanyListingAttributes": {
+                        "type": "array"
+                    },
+                    "PropertyFeatures": {
+                        "type": "array"
+                    },
+                    "OpenHouse": {
+                        "type": "array"
+                    },
+                    "ImagesLastModified": {},
+                    "ListingImages": {
+                        "type": "array"
+                    },
+                    "BuyerCommissionType": {},
+                    "BuyerCommissionValue": {},
+                    "VendorModificationTimestamp": {}
+                },
+                "x-apim-schema-name": "Listings (OffMarket)"
+            },
+            "Listings": {
+                "type": "object",
+                "properties": {
+                    "FinalPage": {
+                        "type": "boolean"
+                    },
+                    "Listings": {
+                        "type": "array",
+                        "items": {
+                            "required": ["LotSizeAcres", "BathroomsFull", "BathroomsHalf", "BathroomsOneQuarter", "BathroomsPartial", "BathroomsThreeQuarter", "BathroomsTotalInteger", "BathroomsTotal", "BedroomsTotal", "PublicTitle", "PublicRemarks", "ModificationTimestamp", "InternetAddressDisplayYN", "DaysOnMarket", "ListingContractDate", "CreatedDate", "ElementarySchool", "GarageSpaces", "WaterfrontYN", "HighSchool", "AssociationFee", "ListOfficeName", "ListPrice", "ListingID", "ListAgentFullName", "ListAgentUUID", "ListAgentOfficeID", "ListAgentMoxiWorksOfficeID", "SecondaryListAgentFullName", "SecondaryListAgentUUID", "SchoolDistrict", "Address", "Address2", "City", "CountyOrParish", "Latitude", "Longitude", "StateOrProvince", "PostalCode", "Community", "LotSizeSquareFeet", "InternetEntireListingDisplayYN", "MiddleOrJuniorSchool", "ListOfficeAOR", "ListOfficeAORArea", "PoolYN", "PropertyType", "TaxAnnualAmount", "TaxYear", "SingleStory", "LivingArea", "ViewYN", "YearBuilt", "OnMarket", "Status", "MoxiWorksListingId", "AgentCreatedListing", "VirtualTourURL", "TaxParcelId", "ListingURL", "CompanyListingAttributes", "PropertyFeatures", "OpenHouse", "ImagesLastModified", "ListingImages", "SoldDate", "SoldPrice", "BuyerAgentFullName", "BuyerAgentUUID", "BuyerAgentOfficeName", "BuyerAgentOfficeID", "BuyerAgentMoxiWorksOfficeID"],
+                            "type": "object",
+                            "properties": {
+                                "LotSizeAcres": {
+                                    "type": "integer"
+                                },
+                                "BathroomsFull": {
+                                    "type": "integer"
+                                },
+                                "BathroomsHalf": {
+                                    "type": "integer"
+                                },
+                                "BathroomsOneQuarter": {},
+                                "BathroomsPartial": {},
+                                "BathroomsThreeQuarter": {},
+                                "BathroomsTotalInteger": {
+                                    "type": "integer"
+                                },
+                                "BathroomsTotal": {
+                                    "type": "integer"
+                                },
+                                "BedroomsTotal": {
+                                    "type": "integer"
+                                },
+                                "PublicTitle": {
+                                    "type": "string"
+                                },
+                                "PublicRemarks": {
+                                    "type": "string"
+                                },
+                                "ModificationTimestamp": {
+                                    "type": "string"
+                                },
+                                "InternetAddressDisplayYN": {
+                                    "type": "boolean"
+                                },
+                                "DaysOnMarket": {
+                                    "type": "integer"
+                                },
+                                "ListingContractDate": {
+                                    "type": "string"
+                                },
+                                "CreatedDate": {
+                                    "type": "string"
+                                },
+                                "ElementarySchool": {
+                                    "type": "string"
+                                },
+                                "GarageSpaces": {
+                                    "type": "integer"
+                                },
+                                "WaterfrontYN": {
+                                    "type": "boolean"
+                                },
+                                "HighSchool": {
+                                    "type": "string"
+                                },
+                                "AssociationFee": {},
+                                "ListOfficeName": {
+                                    "type": "string"
+                                },
+                                "ListPrice": {
+                                    "type": "integer"
+                                },
+                                "ListingID": {
+                                    "type": "string"
+                                },
+                                "ListAgentFullName": {
+                                    "type": "string"
+                                },
+                                "ListAgentUUID": {
+                                    "type": "string"
+                                },
+                                "ListAgentOfficeID": {
+                                    "type": "string"
+                                },
+                                "ListAgentMoxiWorksOfficeID": {
+                                    "type": "string"
+                                },
+                                "SecondaryListAgentFullName": {
+                                    "type": "string"
+                                },
+                                "SecondaryListAgentUUID": {
+                                    "type": "string"
+                                },
+                                "SchoolDistrict": {
+                                    "type": "string"
+                                },
+                                "Address": {
+                                    "type": "string"
+                                },
+                                "Address2": {},
+                                "City": {
+                                    "type": "string"
+                                },
+                                "CountyOrParish": {
+                                    "type": "string"
+                                },
+                                "Latitude": {
+                                    "type": "string"
+                                },
+                                "Longitude": {
+                                    "type": "string"
+                                },
+                                "StateOrProvince": {
+                                    "type": "string"
+                                },
+                                "PostalCode": {
+                                    "type": "string"
+                                },
+                                "Community": {
+                                    "type": "string"
+                                },
+                                "LotSizeSquareFeet": {},
+                                "InternetEntireListingDisplayYN": {
+                                    "type": "boolean"
+                                },
+                                "MiddleOrJuniorSchool": {
+                                    "type": "string"
+                                },
+                                "ListOfficeAOR": {
+                                    "type": "string"
+                                },
+                                "ListOfficeAORArea": {
+                                    "type": "string"
+                                },
+                                "PoolYN": {
+                                    "type": "boolean"
+                                },
+                                "PropertyType": {
+                                    "type": "string"
+                                },
+                                "TaxAnnualAmount": {
+                                    "type": "integer"
+                                },
+                                "TaxYear": {
+                                    "type": "integer"
+                                },
+                                "SingleStory": {
+                                    "type": "boolean"
+                                },
+                                "LivingArea": {
+                                    "type": "integer"
+                                },
+                                "ViewYN": {
+                                    "type": "boolean"
+                                },
+                                "YearBuilt": {
+                                    "type": "integer"
+                                },
+                                "OnMarket": {
+                                    "type": "boolean"
+                                },
+                                "Status": {
+                                    "type": "string"
+                                },
+                                "MoxiWorksListingId": {
+                                    "type": "string"
+                                },
+                                "AgentCreatedListing": {
+                                    "type": "boolean"
+                                },
+                                "VirtualTourURL": {
+                                    "type": "string"
+                                },
+                                "TaxParcelId": {
+                                    "type": "string"
+                                },
+                                "ListingURL": {
+                                    "type": "string"
+                                },
+                                "CompanyListingAttributes": {
+                                    "type": "array",
+                                    "items": {
+                                        "required": ["AttributeId", "AttributeName"],
+                                        "type": "object",
+                                        "properties": {
+                                            "AttributeId": {
+                                                "type": "string"
+                                            },
+                                            "AttributeName": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "PropertyFeatures": {
+                                    "type": "array",
+                                    "items": {
+                                        "required": ["PropertyFeatureName", "PropertyFeatureValues"],
+                                        "type": "object",
+                                        "properties": {
+                                            "PropertyFeatureName": {
+                                                "type": "string"
+                                            },
+                                            "PropertyFeatureValues": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "OpenHouse": {
+                                    "type": "array",
+                                    "items": {
+                                        "required": ["Date", "StartTime", "EndTime"],
+                                        "type": "object",
+                                        "properties": {
+                                            "Date": {
+                                                "type": "string"
+                                            },
+                                            "StartTime": {
+                                                "type": "string"
+                                            },
+                                            "EndTime": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "ImagesLastModified": {
+                                    "type": "string"
+                                },
+                                "ListingImages": {
+                                    "type": "array",
+                                    "items": {
+                                        "required": ["FullURL", "GalleryURL", "RawURL", "SmallURL", "ThumbURL", "Title", "IsMainListingImage", "Caption", "Description", "Width", "Height", "MimeType"],
+                                        "type": "object",
+                                        "properties": {
+                                            "FullURL": {
+                                                "type": "string"
+                                            },
+                                            "GalleryURL": {
+                                                "type": "string"
+                                            },
+                                            "RawURL": {
+                                                "type": "string"
+                                            },
+                                            "SmallURL": {
+                                                "type": "string"
+                                            },
+                                            "ThumbURL": {
+                                                "type": "string"
+                                            },
+                                            "Title": {
+                                                "type": "string"
+                                            },
+                                            "IsMainListingImage": {
+                                                "type": "boolean"
+                                            },
+                                            "Caption": {
+                                                "type": "string"
+                                            },
+                                            "Description": {
+                                                "type": "string"
+                                            },
+                                            "Width": {
+                                                "type": "integer"
+                                            },
+                                            "Height": {
+                                                "type": "integer"
+                                            },
+                                            "MimeType": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "SoldDate": {
+                                    "type": "string"
+                                },
+                                "SoldPrice": {
+                                    "type": "integer"
+                                },
+                                "BuyerAgentFullName": {
+                                    "type": "string"
+                                },
+                                "BuyerAgentUUID": {
+                                    "type": "string"
+                                },
+                                "BuyerAgentOfficeName": {
+                                    "type": "string"
+                                },
+                                "BuyerAgentOfficeID": {
+                                    "type": "string"
+                                },
+                                "BuyerAgentMoxiWorksOfficeID": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "SoldListing": {
+                "type": "object",
+                "properties": {
+                    "LotSizeAcres": {
+                        "type": "integer"
+                    },
+                    "BathroomsFull": {
+                        "type": "integer"
+                    },
+                    "BathroomsHalf": {
+                        "type": "integer"
+                    },
+                    "BathroomsOneQuarter": {},
+                    "BathroomsPartial": {},
+                    "BathroomsThreeQuarter": {},
+                    "BathroomsTotalInteger": {
+                        "type": "integer"
+                    },
+                    "BathroomsTotal": {
+                        "type": "integer"
+                    },
+                    "BedroomsTotal": {
+                        "type": "integer"
+                    },
+                    "PublicTitle": {
+                        "type": "string"
+                    },
+                    "PublicRemarks": {
+                        "type": "string"
+                    },
+                    "ModificationTimestamp": {
+                        "type": "string"
+                    },
+                    "InternetAddressDisplayYN": {
+                        "type": "boolean"
+                    },
+                    "DaysOnMarket": {
+                        "type": "integer"
+                    },
+                    "ListingContractDate": {
+                        "type": "string"
+                    },
+                    "CreatedDate": {
+                        "type": "string"
+                    },
+                    "ElementarySchool": {
+                        "type": "string"
+                    },
+                    "GarageSpaces": {
+                        "type": "integer"
+                    },
+                    "WaterfrontYN": {
+                        "type": "boolean"
+                    },
+                    "HighSchool": {
+                        "type": "string"
+                    },
+                    "AssociationFee": {},
+                    "ListOfficeName": {
+                        "type": "string"
+                    },
+                    "ListPrice": {
+                        "type": "integer"
+                    },
+                    "ListingID": {
+                        "type": "string"
+                    },
+                    "ListAgentFullName": {
+                        "type": "string"
+                    },
+                    "ListAgentUUID": {
+                        "type": "string"
+                    },
+                    "ListAgentOfficeID": {
+                        "type": "string"
+                    },
+                    "ListAgentMoxiWorksOfficeID": {
+                        "type": "string"
+                    },
+                    "SecondaryListAgentFullName": {
+                        "type": "string"
+                    },
+                    "SecondaryListAgentUUID": {
+                        "type": "string"
+                    },
+                    "SchoolDistrict": {
+                        "type": "string"
+                    },
+                    "Address": {
+                        "type": "string"
+                    },
+                    "Address2": {},
+                    "City": {
+                        "type": "string"
+                    },
+                    "CountyOrParish": {
+                        "type": "string"
+                    },
+                    "Latitude": {
+                        "type": "string"
+                    },
+                    "Longitude": {
+                        "type": "string"
+                    },
+                    "StateOrProvince": {
+                        "type": "string"
+                    },
+                    "PostalCode": {
+                        "type": "string"
+                    },
+                    "Community": {
+                        "type": "string"
+                    },
+                    "LotSizeSquareFeet": {},
+                    "InternetEntireListingDisplayYN": {
+                        "type": "boolean"
+                    },
+                    "MiddleOrJuniorSchool": {
+                        "type": "string"
+                    },
+                    "ListOfficeAOR": {
+                        "type": "string"
+                    },
+                    "ListOfficeAORArea": {
+                        "type": "string"
+                    },
+                    "PoolYN": {
+                        "type": "boolean"
+                    },
+                    "PropertyType": {
+                        "type": "string"
+                    },
+                    "TaxAnnualAmount": {
+                        "type": "integer"
+                    },
+                    "TaxYear": {
+                        "type": "integer"
+                    },
+                    "SingleStory": {
+                        "type": "boolean"
+                    },
+                    "LivingArea": {
+                        "type": "integer"
+                    },
+                    "ViewYN": {
+                        "type": "boolean"
+                    },
+                    "YearBuilt": {
+                        "type": "integer"
+                    },
+                    "OnMarket": {
+                        "type": "boolean"
+                    },
+                    "Status": {
+                        "type": "string"
+                    },
+                    "MoxiWorksListingId": {
+                        "type": "string"
+                    },
+                    "AgentCreatedListing": {
+                        "type": "boolean"
+                    },
+                    "VirtualTourURL": {
+                        "type": "string"
+                    },
+                    "TaxParcelId": {
+                        "type": "string"
+                    },
+                    "CompanyListingAttributes": {
+                        "type": "array",
+                        "items": {
+                            "required": ["AttributeId", "AttributeName"],
+                            "type": "object",
+                            "properties": {
+                                "AttributeId": {
+                                    "type": "string"
+                                },
+                                "AttributeName": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "PropertyFeatures": {
+                        "type": "array",
+                        "items": {
+                            "required": ["PropertyFeatureName", "PropertyFeatureValues"],
+                            "type": "object",
+                            "properties": {
+                                "PropertyFeatureName": {
+                                    "type": "string"
+                                },
+                                "PropertyFeatureValues": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "OpenHouse": {
+                        "type": "array",
+                        "items": {
+                            "required": ["Date", "StartTime", "EndTime"],
+                            "type": "object",
+                            "properties": {
+                                "Date": {
+                                    "type": "string"
+                                },
+                                "StartTime": {
+                                    "type": "string"
+                                },
+                                "EndTime": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "ImagesLastModified": {
+                        "type": "string"
+                    },
+                    "ListingImages": {
+                        "type": "array",
+                        "items": {
+                            "required": ["FullURL", "GalleryURL", "RawURL", "SmallURL", "ThumbURL", "Title", "IsMainListingImage", "Caption", "Description", "Width", "Height", "MimeType"],
+                            "type": "object",
+                            "properties": {
+                                "FullURL": {
+                                    "type": "string"
+                                },
+                                "GalleryURL": {
+                                    "type": "string"
+                                },
+                                "RawURL": {
+                                    "type": "string"
+                                },
+                                "SmallURL": {
+                                    "type": "string"
+                                },
+                                "ThumbURL": {
+                                    "type": "string"
+                                },
+                                "Title": {
+                                    "type": "string"
+                                },
+                                "IsMainListingImage": {
+                                    "type": "boolean"
+                                },
+                                "Caption": {
+                                    "type": "string"
+                                },
+                                "Description": {
+                                    "type": "string"
+                                },
+                                "Width": {
+                                    "type": "integer"
+                                },
+                                "Height": {
+                                    "type": "integer"
+                                },
+                                "MimeType": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "SoldDate": {
+                        "type": "string"
+                    },
+                    "SoldPrice": {
+                        "type": "integer"
+                    },
+                    "BuyerAgentFullName": {
+                        "type": "string"
+                    },
+                    "BuyerAgentUUID": {
+                        "type": "string"
+                    },
+                    "BuyerAgentOfficeName": {
+                        "type": "string"
+                    },
+                    "BuyerAgentOfficeID": {
+                        "type": "string"
+                    },
+                    "BuyerAgentMoxiWorksOfficeID": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Team": {
+                "type": "object",
+                "properties": {
+                    "uuid": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "address1": {
+                        "type": "string"
+                    },
+                    "address2": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "zipcode": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "fax": {
+                        "type": "string"
+                    },
+                    "logo_url": {
+                        "type": "string"
+                    },
+                    "photo_url": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "social_media_urls": {},
+                    "alt_phone": {
+                        "type": "string"
+                    },
+                    "alt_email": {
+                        "type": "string"
+                    },
+                    "website_url": {
+                        "type": "string"
+                    },
+                    "active": {
+                        "type": "boolean"
+                    }
+                },
+                "example": {
+                    "uuid": "feedface-dead-beef-aadf-baddeedc645",
+                    "name": "New Team One",
+                    "email": "email@address",
+                    "address1": "1234 Here St.",
+                    "address2": "Suite: 1234",
+                    "city": "Sweetville",
+                    "zipcode": "91820",
+                    "state": "OR",
+                    "phone": "666-555-1234",
+                    "fax": "666-867-5309",
+                    "logo_url": "http://website.url/logo.png",
+                    "photo_url": "http://website.url/image.jpg",
+                    "description": "This team is the teamisest",
+                    "social_media_urls": null,
+                    "alt_phone": "666-555-4444",
+                    "alt_email": "alternate@email.address",
+                    "website_url": "http://the.team.website",
+                    "active": true
+                }
+            },
+            "Teams": {
+                "type": "array",
+                "items": {
+                    "required": ["uuid", "name", "email", "address1", "address2", "city", "zipcode", "state", "phone", "fax", "logo_url", "photo_url", "description", "social_media_urls", "alt_phone", "alt_email", "website_url", "active"],
+                    "type": "object",
+                    "properties": {
+                        "uuid": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "email": {
+                            "type": "string"
+                        },
+                        "address1": {
+                            "type": "string"
+                        },
+                        "address2": {
+                            "type": "string"
+                        },
+                        "city": {
+                            "type": "string"
+                        },
+                        "zipcode": {
+                            "type": "string"
+                        },
+                        "state": {
+                            "type": "string"
+                        },
+                        "phone": {
+                            "type": "string"
+                        },
+                        "fax": {
+                            "type": "string"
+                        },
+                        "logo_url": {
+                            "type": "string"
+                        },
+                        "photo_url": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "social_media_urls": {},
+                        "alt_phone": {
+                            "type": "string"
+                        },
+                        "alt_email": {
+                            "type": "string"
+                        },
+                        "website_url": {
+                            "type": "string"
+                        },
+                        "active": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "example": [{
+                    "uuid": "feedface-dead-beef-aadf-baddeedc645",
+                    "name": "New Team One",
+                    "email": "email@address",
+                    "address1": "1234 Here St.",
+                    "address2": "Suite: 1234",
+                    "city": "Sweetville",
+                    "zipcode": "91820",
+                    "state": "OR",
+                    "phone": "666-555-1234",
+                    "fax": "666-867-5309",
+                    "logo_url": "http://website.url/logo.png",
+                    "photo_url": "http://website.url/image.jpg",
+                    "description": "",
+                    "social_media_urls": null,
+                    "alt_phone": "666-555-4444",
+                    "alt_email": "alternate@email.address",
+                    "website_url": "http://the.team.website",
+                    "active": true
+                }]
+            },
+            "companies": {
+                "type": "array",
+                "items": {
+                    "required": ["moxi_works_company_id", "name", "numeric_id", "client_company_id", "public_partner_attrs"],
+                    "type": "object",
+                    "properties": {
+                        "moxi_works_company_id": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "numeric_id": {
+                            "type": "string"
+                        },
+                        "client_company_id": {
+                            "type": "string"
+                        },
+                        "public_partner_attrs": {
+                            "type": "object",
+                            "properties": {
+                                "is_nrt": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "company": {
+                "type": "object",
+                "properties": {
+                    "moxi_works_company_id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "numeric_id": {
+                        "type": "string"
+                    },
+                    "client_company_id": {
+                        "type": "string"
+                    },
+                    "public_partner_attrs": {
+                        "type": "object",
+                        "properties": {
+                            "is_nrt": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "apiKeyHeader": {
+                "type": "apiKey",
+                "name": "x-api-key",
+                "in": "header"
+            },
+            "apiKeyQuery": {
+                "type": "apiKey",
+                "name": "api-key",
+                "in": "query"
+            }
+        }
+    },
+    "security": [{
+        "apiKeyHeader": []
+    }, {
+        "apiKeyQuery": []
+    }]
+}
