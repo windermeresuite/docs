@@ -1468,7 +1468,8 @@
                     "in": "query",
                     "description": "Exposed company attributes",
                     "schema": {
-                        "type": "hash or null"
+                            "type": "object",
+                            "nullable": true
                     }
                 }],
                 "responses": {
