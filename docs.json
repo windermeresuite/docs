@@ -23,7 +23,7 @@
                   "api-reference/introduction",
                   {
                     "group": "Windermere API",
-                    "openapi": "windermereapi.json"
+                    "openapi": "windermereapi(1).json"
                   }
                 ]
               }
@@ -58,7 +58,7 @@
    ]
   },
   "api": {
-    "openapi": "/windermereapi.json"
+    "openapi": "/windermereapi(1).json"
   },
   "fonts": {
     "family": "Montserrat",
