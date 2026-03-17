@@ -20,6 +20,7 @@
           "pages": [
             {
               "group": "Agents & Offices",
+              "expanded": true,
               "openapi": "windermereapi(1).json",
               "pages": [
                 "GET /agents",
@@ -32,6 +33,7 @@
             },
             {
               "group": "Listings",
+              "expanded": true,
               "openapi": "windermereapi(1).json",
               "pages": [
                 "GET /listings",
@@ -42,6 +44,7 @@
             },
             {
               "group": "Company",
+              "expanded": true,
               "openapi": "windermereapi(1).json",
               "pages": [
                 "GET /companies",
