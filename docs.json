@@ -9,19 +9,18 @@
   },
   "favicon": "/images/favicon-32x32.png",
   "navigation": {
-        "products": [
+    "products": [
+      {
+        "product": "API reference",
+        "pages": [
+          "api-reference/introduction",
           {
-            "product": "API reference",
-            "pages": [
-              "api-reference/introduction",
-              {
-                "group": "Endpoints",
-                "openapi": "windermereapi(1).json"
-              }
-            ]
+            "group": "",
+            "openapi": "windermereapi(1).json"
           }
         ]
       }
+    ]
   },
   "logo": {
     "light": "/images/WRE_logo_HORIZ_CLR_resized.png",
@@ -37,15 +36,15 @@
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "api": {
     "openapi": "/windermereapi(1).json"
