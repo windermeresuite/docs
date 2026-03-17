@@ -17,7 +17,6 @@
         {
           "group": "Endpoints",
           "expanded": true,
-          "openapi": "windermereapi(1).json",
           "pages": [
             {
               "group": "Agents & Offices",
