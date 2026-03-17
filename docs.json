@@ -9,17 +9,23 @@
   },
   "favicon": "/images/favicon-32x32.png",
   "navigation": {
-    "products": [
+    "tabs": [
       {
-        "product": "API reference",
-        "groups": [
+        "tab": "Untitled Tab",
+        "hidden": true,
+        "products": [
           {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction",
+            "product": "API reference",
+            "groups": [
               {
-                "group": "Endpoints",
-                "openapi": "windermereapi.json"
+                "group": "API documentation",
+                "pages": [
+                  "api-reference/introduction",
+                  {
+                    "group": "Windermere API",
+                    "openapi": "windermereapi.json"
+                  }
+                ]
               }
             ]
           }
