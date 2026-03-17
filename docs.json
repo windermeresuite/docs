@@ -9,10 +9,6 @@
   },
   "favicon": "/images/favicon-32x32.png",
   "navigation": {
-    "tabs": [
-      {
-        "tab": "Untitled Tab",
-        "hidden": true,
         "products": [
           {
             "product": "API reference",
