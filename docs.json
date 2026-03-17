@@ -15,7 +15,7 @@
         "pages": [
           "api-reference/introduction",
           {
-            "group": "",
+            "group": "Endpoints",
             "openapi": "windermereapi(1).json"
           }
         ]
