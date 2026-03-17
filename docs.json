@@ -79,8 +79,8 @@
     ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/images/WRE_logo_HORIZ_CLR.png",
+    "dark": "/images/WRE_logo_HORIZ_REV.png"
   },
   "navbar": {
     "links": [
