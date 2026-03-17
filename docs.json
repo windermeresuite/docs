@@ -8,21 +8,53 @@
     "dark": "#002a4e"
   },
   "favicon": "/images/favicon-32x32.png",
-  "navigation": {
-    "products": [
-      {
-        "product": "API reference",
-        "pages": [
-          "api-reference/introduction",
-          {
-            "group": "API Reference",
-            "expanded": true,
-            "openapi": "windermereapi(1).json"
-          }
-        ]
-      }
-    ]
-  },
+"navigation": {
+  "products": [
+    {
+      "product": "API reference",
+      "pages": [
+        "api-reference/introduction",
+        {
+          "group": "Endpoints",
+          "expanded": true,
+          "openapi": "windermereapi(1).json",
+          "pages": [
+            {
+              "group": "Agents & Offices",
+              "openapi": "windermereapi(1).json",
+              "pages": [
+                "GET /agents",
+                "GET /agents/{guid}",
+                "GET /offices",
+                "GET /offices/{moxi_works_office_id}",
+                "GET /teams",
+                "GET /teams/{moxi_works_team_id}"
+              ]
+            },
+            {
+              "group": "Listings",
+              "openapi": "windermereapi(1).json",
+              "pages": [
+                "GET /listings",
+                "GET /listings/{moxi_works_listing_id}",
+                "GET /sold_listings",
+                "GET /sold_listings/{moxi_works_listing_id}"
+              ]
+            },
+            {
+              "group": "Company",
+              "openapi": "windermereapi(1).json",
+              "pages": [
+                "GET /companies",
+                "GET /companies/{moxi_works_company_id}"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+},
   "logo": {
     "light": "/images/WRE_logo_HORIZ_CLR_resized.png",
     "dark": "/images/WRE_logo_HORIZ_REV_resized.png"
