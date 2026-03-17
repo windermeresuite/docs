@@ -256,7 +256,11 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Endpoints",
+                    "Agents & Offices"
+                ]
             }
         },
         "/agents/{guid}": {
@@ -439,7 +443,11 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Endpoints",
+                    "Agents & Offices"
+                ]
             }
         },
         "/offices": {
@@ -547,7 +555,11 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Endpoints",
+                    "Agents & Offices"
+                ]
             }
         },
         "/offices/{moxi_works_office_id}": {
@@ -635,7 +647,11 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Endpoints",
+                    "Agents & Offices"
+                ]
             }
         },
         "/listings/{moxi_works_listing_id}": {
@@ -808,7 +824,11 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Endpoints",
+                    "Listings"
+                ]
             }
         },
         "/listings": {
@@ -1059,7 +1079,11 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Endpoints",
+                    "Listings"
+                ]
             }
         },
         "/sold_listings": {
@@ -1249,7 +1273,11 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Endpoints",
+                    "Listings"
+                ]
             }
         },
         "/sold_listings/{moxi_works_listing_id}": {
@@ -1432,7 +1460,11 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Endpoints",
+                    "Listings"
+                ]
             }
         },
         "/teams/{moxi_works_team_id}": {
@@ -1490,7 +1522,11 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Endpoints",
+                    "Agents & Offices"
+                ]
             }
         },
         "/teams": {
@@ -1541,7 +1577,11 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Endpoints",
+                    "Agents & Offices"
+                ]
             }
         },
         "/companies/{moxi_works_company_id}": {
@@ -1579,7 +1619,11 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Endpoints",
+                    "Company"
+                ]
             }
         },
         "/companies": {
@@ -1651,7 +1695,11 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "Endpoints",
+                    "Company"
+                ]
             }
         }
     },
